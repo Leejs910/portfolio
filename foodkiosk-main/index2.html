@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<link rel="stylesheet" href="style/style.css">
+
+<body>
+
+  <div class="container p-2">
+    <!-- 위쪽 홈화면 -->
+    <nav class="navbar" id="navi_1">
+      <div class="label ms-3">교육용</div>
+      <div class="label">일반음식점</div>
+      <a class="navbar-brand" href="#">
+        <img src="img/Icon_home.svg" alt="Bootstrap" width="40" href="#" onclick="location.href='index.html'">
+      </a>
+    </nav>
+    <!-- 아래쪽 네비화면 -->
+    <nav class="container-fluid text-center p-0" id="navi_2">
+      <div class="flex">
+        <div class="col-12 navbar navbar-expand-md" id="middle">
+          <div class="container-fluid" id="middle_navi">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <!-- <li class="nav-item">
+                  <a class="nav-link active" aria-current="page">우동의 맛</a>
+                </li> -->
+                <!-- <li class="nav-item">
+                  <a class="nav-link">덮밥의 맛</a>
+                </li> -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- 중앙 콘텐츠 화면 -->
+    <div class="d-grid grid py-3" id="mid_content">
+      <!-- 왼쪽 콘텐츠 -->
+      <div class="g-col-12  g-col-md-8 h-100" id="left_content" style="max-height: 100%; min-height:250px;">
+        <!-- 카드 -->
+        <div class="m-3 fs-4 plusfoodTitle">+ <span id="foodCardTitle">우동의 맛</span></div>
+        <div class="grid text-center p-3" id="card_index" style="box-sizing: border-box; justify-items: center;">
+
+          <!-- 카드1 -->
+          <!-- <div class="card">
+            <img src="/img_2/A-002.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-title">용우동</p>
+              <p class="card-text">10000 </p>
+            </div>
+          </div> -->
+
+
+
+        </div>
+      </div>
+
+      <!-- 오른쪽 콘텐츠 -->
+      <div class="g-col-12 g-col-md-4 text-center justify-items: center;" id="right_content"
+        style=" background-color: white; border: 2px solid gray; border-radius: .5rem; max-height: 100%; overflow: hidden; ">
+        <!-- 오른쪽 컨텐츠 내용 -->
+        <div class="mt-3" id="foodTitle2">선택하신 주문내역</div>
+        <div class="grid p-3" style=" max-height: 100%;  --bs-rows: 2; --bs-columns: 1; --bs-gap: 0rem;  ">
+          <div class="grid" 
+            style=" --bs-rows: 1; --bs-columns: 1; --bs-gap: 0rem; overflow-y: scroll; border: solid 2px gray;">
+            <!-- 제품명/수량/가격 -->
+            <table>
+              <thead>
+                <tr class="right_up">
+                  <th></th>
+                  <th>제품명</th>
+                  <th>수량</th>
+                  <th>가격</th>
+                </tr>
+              </thead>
+              <tbody style="vertical-align: center;" id="productTable">
+                <!-- 
+                <tr>
+                  <td><img style="padding-left: 3px;" src="/img/Icon awesome-trash-alt.svg" alt=""></td>
+                  <td>오므라이스</td>
+                  <td><img src="/img/Icon feather-minus-circle.svg">&nbsp;&nbsp; <span>1</span> &nbsp;&nbsp; <img
+                      src="/img/Icon feather-plus-circle.svg"></td>
+                  <td>40000</td>
+                </tr> -->
+
+
+
+
+              </tbody>
+
+            </table>
+          </div>
+
+          <div class="grid align-items-center"
+            style="--bs-rows: 2; --bs-columns: 1; --bs-gap: 0rem; margin-top:4rem; margin-bottom: 1rem">
+            <table>
+              <tr style="border:2px solid gray;">
+                <th style="text-align: left; padding: .5rem;">수량</th>
+                <th style="text-align: right;padding: .5rem;"><span id="all_quntity">0</span>개</th>
+              </tr>
+              <tr style="border:2px solid gray;">
+                <th style="text-align: left; padding: .5rem;">합계</th>
+                <th style="text-align: right; padding: .5rem;" id="all_price">0</th>
+              </tr>
+
+            </table>
+            <div class="grid" id="bottom_bt" style=" --bs-rows: 1; --bs-columns: 2; --bs-gap: 1rem;">
+              <div id="left_bt">취소</div>
+              <div id="right_bt">결제</div>
+            </div>
+          </div>
+          <!--오른쪽 콘텐츠 내용 끝 -->
+        </div>
+        <!--오른쪽 콘텐츠 끝  -->
+      </div>
+      <!-- 중앙 콘텐츠 끝 -->
+    </div>
+    <!-- 컨테이너 끝 -->
+  </div>
+
+
+  <!-- 모달1 -->
+  <div class="modal_background" id="modal-a">
+    <div id="modal-a-inner" class="grid p-3 align-items-center justify-content-center"style="-bs-rows: 3; --bs-columns: 1; --bs-gap: 1rem;">
+      <div class="modala_title" style="font-size: 1.4rem;">결제 수단을 선택해주세요</div>
+      <div class="grid " id="inner_card" style="-bs-rows: 2; --bs-columns: 6; --bs-gap: .5rem;">
+         <!--카드 appendChild-->
+        <!-- <div>
+          <div class="your_order_card grid justify-content-center align-items-center p-1" style="-bs-rows: 3; --bs-columns: 1; --bs-gap: .5rem;">
+            <div><img class="your_order_img" src="/img_2/A-002.jpg" class="img" style="width: auto; max-height: 6rem;" alt="..."></div>  
+            <div class="your_order_name">용우동</div>
+            <div><span class="your_order_price">15000</span>원</div>
+          </div>
+        </div> -->
+        <!-- 카드끝 -->
+      </div>
+      <div class="grid justify-content-center align-items-center"style="-bs-rows: 3; --bs-columns: 2; --bs-gap: .5rem;" >
+        <div class="your_order_text1 p-2">합계</div>
+        <div class="your_order_text_varible p-2">0</div>
+        <div class="your_order_bt1 p-2">신용카드</div>
+        <div class="your_order_bt2 p-2">현금</div>
+        <div class="your_order_bt3 p-2">페이코</div>
+        <div class="your_order_bt4 p-2">카카오페이</div>
+      </div>
+    </div>
+  </div>
+
+<!-- 모달2 -->
+<div class="modal_background" id="modal-b">
+  <div id="modal-b-inner" class="grid p-3 align-items-center justify-content-center"style="-bs-rows: 3; --bs-columns: 1; --bs-gap: 1rem;  border: 2px gray solid; background-color: #F1F1F1;">
+    <div class="grid" style="-bs-rows: 2; --bs-columns: 1; --bs-gap: .5rem;">
+      <div class="creditcard_title" style="font-size: 1.4rem;">주문하신 내용이 맞나요?</div>
+      <div style="font-size: 1rem;">결제 버튼을 누른 후 영수증 출력시 까지 카드를 제거하지 말아주시기 바랍니다.</div> 
+    </div>
+    <div class="grid mb-5" id="creditcard_img" style="-bs-rows: 1; --bs-columns: 1; --bs-gap: .5rem;">
+     <img class="creditcard_innerimg" src="img/cardInsert.svg" alt="#">
+    </div>
+    <div class="grid justify-content-center align-items-center"style="-bs-rows: 1; --bs-columns: 2; --bs-gap: .5rem;" >
+      <div class="creditcard_bt1 p-2">취소</div>
+      <div class="creditcard_bt2 p-2">결제</div>
+    </div>
+  </div>
+</div>
+
+<!-- 모달3 -->
+
+<div class="modal_background" id="modal-c">
+    <div id="modal-c-inner" class="grid p-3" style="-bs-rows: 3; --bs-columns: 1; --bs-gap: .5rem;">
+      <div class="insertcard_title" style="font-size: 1.4rem;">카드 투입기에 카드를 넣어주세요</div>
+      <div style="font-size: 1rem;">ic 카드를 꽂아주세요</div> 
+      <div class="grid mb-5" id="creditcard_img" style="-bs-rows: 1; --bs-columns: 1; --bs-gap: .5rem;">
+        <img class="creditcard_innerimg" src="img/cardInsert.svg" alt="#">
+      </div>
+    </div>
+</div>
+
+<!-- 모달4 -->
+<div class="modal_background" id="modal-d">
+  <div id="modal-d-inner" class="grid p-3" style="-bs-rows: 2; --bs-columns: 1; --bs-gap: .5rem;">
+    <div class="recipt_title" style="font-size: 1.4rem;">영수증을 출력하시겠습니까?</div>
+    <div class="grid" id="creditcard_img" style="-bs-rows: 1; --bs-columns: 2; --bs-gap: .5rem;">
+      <div class="recipt-bt1">예</div>
+      <div class="recipt-bt2">아니오</div>
+    </div>
+  </div>
+</div>
+    
+<!-- 모달5 -->
+
+<div class="modal_background" id="modal-e">
+  <div id="modal-e-inner" class="grid p-3 align-items-center justify-content-center"style="-bs-rows: 3; --bs-columns: 1; --bs-gap: 1rem; ">
+    <div class="grid" style="-bs-rows: 2; --bs-columns: 1; --bs-gap: .5rem;">
+      <div class="complete-title" style="font-size: 1.4rem;">결제완료</div>
+      <div class="complete-text" style="font-size: 1rem;">결제가 완료 되었습니다. 영수증을 확인해 주세요</div> 
+    </div>
+    <div class="grid " id="receipt_img" style="-bs-rows: 2; --bs-columns: 1; --bs-gap: .5rem;">
+     <div><img class="receipt-img_inner" src="img/receipt.svg" alt="#"></div>
+     <!-- <div id="sprint"class="grid" style="-bs-rows: 1; --bs-columns: 1; --bs-gap: 0rem;"></div> -->
+    </div>
+    <div class="grid justify-content-center align-items-center"style="-bs-rows: 1; --bs-columns: 1; --bs-gap: .5rem;" >
+      <div class="complete-bt1">확인</div>
+    </div>
+  </div>
+</div>
+
+<!-- 모달6(경고) -->
+<div class="modal_background" id="modal-f">
+  <div id="modal-f-inner" class="grid p-3 align-items-center justify-content-center"style="-bs-rows: 2; --bs-columns: 1; --bs-gap: 1rem; ">
+    <div class="grid" style="-bs-rows: 1; --bs-columns: 1; --bs-gap: .5rem;">
+      <div class="warning-title" style="font-size: 1.4rem;"> 100,000 이상은 주문 하실 수 없습니다.</div>
+    </div>
+    <div class="grid justify-content-center align-items-center"style="-bs-rows: 1; --bs-columns: 1; --bs-gap: .5rem;" >
+      <div class="warning-bt1">확인</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 모달7(테이블) -->
+<div class="modal_background" id="modal-g">
+  <div id="modal-g-inner" class="grid p-3 align-items-center justify-content-center"style="-bs-rows: 1; --bs-columns: 1; --bs-gap: 1rem; ">
+    <div class="grid" style="-bs-rows: 3; --bs-columns: 1; --bs-gap: .5rem;">
+      <div class="calculate-title" style="font-size: 1.4rem;">테이블 번호를 입력해주세요</div>
+      <div class="calculate-numpad" style="font-size: 1.4rem;">
+        <form action="" name="cal">
+          <table>
+              <tr>
+                  <th colspan="3"> <input type="text" name="result" value="0"></th>
+              </tr>
+              <tr>
+                  <td><input type="button" value="1"></td>
+                  <td><input type="button" value="2"></td>
+                  <td><input type="button" value="3"></td>
+                  
+              </tr>
+              <tr>
+                  <td><input type="button" value="4"></td>
+                  <td><input type="button" value="5"></td>
+                  <td><input type="button" value="6"></td>
+                  
+              </tr>
+              <tr>
+                  <td><input type="button" value="7"></td>
+                  <td><input type="button" value="8"></td>
+                  <td><input type="button" value="9"></td>
+                  
+              </tr>
+              <tr>
+                  <td><input type="button" value="0"></td>
+                  <td><input class="backspace_btn" type="button" value="back"></td>
+                  <td><input class="cls_btn" type="button" value="clear"></td>
+              </tr>
+          </table>
+      </form>
+      
+      </div>
+      <div class="grid justify-content-center align-items-center" style="-bs-rows: 1; --bs-columns: 2; --bs-gap: .5rem;">
+        <div id="calculate_cancel_bt">취소</div>
+        <div id="calculate_correct_bt">확인</div>
+      </div>
+      
+    </div>
+    
+    <!-- 확인 취소 버튼 -->
+  </div>
+</div>
+
+
+
+
+
+    <script src="bootstrap.min.js"></script>
+    <script src="foodData.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

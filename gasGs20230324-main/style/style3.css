@@ -1,0 +1,338 @@
+@charset "UTF-8";
+/*
+Copyright (c) 2021 Kil Hyung-jin, with Reserved Font Name Pretendard.
+https://github.com/orioncactus/pretendard
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+*/
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 900;
+  font-display: swap;
+  src: local("Pretendard Black"), url("/woff2/Pretendard-Black.woff2") format("woff2"), url("./woff/Pretendard-Black.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 800;
+  font-display: swap;
+  src: local("Pretendard ExtraBold"), url("/woff2/Pretendard-ExtraBold.woff2") format("woff2"), url("./woff/Pretendard-ExtraBold.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-display: swap;
+  src: local("Pretendard Bold"), url("/woff2/Pretendard-Bold.woff2") format("woff2"), url("./woff/Pretendard-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-display: swap;
+  src: local("Pretendard SemiBold"), url("/woff2/Pretendard-SemiBold.woff2") format("woff2"), url("./woff/Pretendard-SemiBold.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-display: swap;
+  src: local("Pretendard Medium"), url("/woff2/Pretendard-Medium.woff2") format("woff2"), url("./woff/Pretendard-Medium.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-display: swap;
+  src: local("Pretendard Regular"), url("/woff2/Pretendard-Regular.woff2") format("woff2"), url("./woff/Pretendard-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 300;
+  font-display: swap;
+  src: local("Pretendard Light"), url("/woff2/Pretendard-Light.woff2") format("woff2"), url("./woff/Pretendard-Light.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 200;
+  font-display: swap;
+  src: local("Pretendard ExtraLight"), url("/woff2/Pretendard-ExtraLight.woff2") format("woff2"), url("./woff/Pretendard-ExtraLight.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 100;
+  font-display: swap;
+  src: local("Pretendard Thin"), url("/woff2/Pretendard-Thin.woff2") format("woff2"), url("./woff/Pretendard-Thin.woff") format("woff");
+}
+* {
+  font-family: "Pretendard", "Roboto", sans-serif, Arial, Helvetica;
+}
+* body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+* body .container-fluid {
+  border: 0.5rem solid black;
+  max-width: 1920px;
+  height: calc(100% - 2rem);
+  text-align: center;
+  overflow: hidden;
+  background-color: #ebfaff;
+}
+* body .container-fluid .navi-up {
+  display: inline-flex;
+  width: 100%;
+  background-color: black;
+  color: white;
+  height: 4rem;
+}
+* body .container-fluid .navi-up .educate {
+  text-align: left;
+}
+* body .container-fluid .navi-up .home-bt {
+  text-align: right;
+}
+* body .container-fluid .navi-down {
+  height: 4rem;
+  width: 100%;
+  display: inline-flex;
+  background-color: #00788B;
+  color: white;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+* body .container-fluid .inner-content {
+  width: 100%;
+  height: calc(100% - 8rem);
+  display: inline-flex;
+  place-items: center;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+}
+* body .container-fluid .inner-content .section {
+  width: 50rem;
+  max-width: 800px;
+  max-height: 400px;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+* body .container-fluid .inner-content .profile {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 진행상황 progress bar*/
+}
+* body .container-fluid .inner-content .profile h2 {
+  line-height: 1;
+  font-weight: normal;
+  font-size: 1rem;
+  top: 0.5rem;
+  color: white;
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  z-index: 3;
+}
+* body .container-fluid .inner-content .profile #progress_bar {
+  display: flex;
+  height: 2rem;
+  width: 15rem;
+  background: transparent;
+  border: 2px solid #35e0f7;
+  border-radius: 16px;
+  box-shadow: 3px 3px 20px rgba(0, 255, 255, 0.493);
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+  overflow: hidden;
+  /* 진행상황 progressbar내부  */
+}
+* body .container-fluid .inner-content .profile #progress_bar #progress {
+  background: linear-gradient(45deg, #4affff, #35e0f7);
+  background-color: #444;
+  height: 100%;
+  width: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+}
+* body .container-fluid .inner-content .profile .btnview {
+  display: block;
+  width: 15rem;
+  height: 2rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+  background-color: #444;
+  border-radius: 16px;
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 32px;
+  text-align: center;
+  text-decoration: none;
+  background: linear-gradient(45deg, #4affff, #35e0f7);
+  box-shadow: 3px 3px 20px rgba(0, 255, 255, 0.493);
+  color: #fff;
+}
+
+/*index2 */
+.content {
+  width: 500px;
+  height: auto;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.pic {
+  width: 40rem;
+  height: 20em;
+  background-color: antiquewhite;
+  border: 0.2rem solid #386CA8;
+}
+
+.btn-1 {
+  background-color: #386CA8;
+  width: 20rem;
+  padding: 0.5rem;
+  color: white;
+  border-radius: 10rem;
+  text-align: center;
+}
+
+.pic-2 {
+  width: 40rem;
+  height: 20em;
+  background-color: antiquewhite;
+  border: 0.2rem solid #386CA8;
+}
+.pic-2 .inner-pic-2 {
+  margin: 2rem;
+  width: 15rem;
+  height: auto;
+  align-self: center;
+}
+
+.mesage1 {
+  font-size: 1.2rem;
+}
+
+.btn-up {
+  font-size: 1.5rem;
+  background-color: #00788B;
+  border: 5px solid black;
+  color: #FFFFFF;
+  font-weight: bold;
+  padding: 1rem;
+  border-radius: 10rem;
+}
+
+.inner-a {
+  text-align: left;
+}
+
+.inner-b {
+  text-align: right;
+}
+
+.btn-howtopay {
+  padding: 1rem;
+  font-size: 1.5rem;
+  background-color: aliceblue;
+  border: 5px solid black;
+  color: #386CA8;
+  font-weight: bold;
+  border-radius: 1rem;
+  opacity: 20%;
+}
+
+.btn-howmuch {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  background-color: aliceblue;
+  border: 5px solid black;
+  color: #386CA8;
+  font-weight: bold;
+  border-radius: 1rem;
+}
+
+.btn-howmuch-etc {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  background-color: #00788B;
+  border: 5px solid black;
+  color: #FFFFFF;
+  font-weight: bold;
+  border-radius: 1rem;
+}
+
+.hand-bt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15rem;
+  height: 15rem;
+  background-color: #fff;
+  border: #444 solid 5px;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  background: linear-gradient(#8e9eab, #eef2f3);
+  opacity: 20%;
+}
+.hand-bt .hand-inner {
+  position: relative;
+  width: 10rem;
+  height: 10rem;
+  background-image: url("/img/SVG/handBigLogo.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: -0.1rem;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hand-bt .hand-inner .hand-text {
+  font-size: 1.3rem;
+  color: red;
+  font-weight: 900;
+  align-self: center;
+}
+.hand-bt .hand-inner .black-ball {
+  width: 5rem;
+  height: 5rem;
+  background-color: black;
+  border-radius: 50%;
+  position: relative;
+  bottom: -1rem;
+  left: 1rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+}
+.hand-bt .hand-inner .black-ball .white-blur {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 20%;
+  box-shadow: 0px 0px 10px rgb(255, 255, 255);
+  background-blend-mode: multiply;
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+}

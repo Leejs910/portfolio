@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fastfood | 이재서</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/bootstrap.css">
+</head>
+
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+
+    <div class="container-fluid m-0 p-0">
+        <!-- 네비 교육용 로고 -->
+        <nav class="navi-up">
+            <a>교육용</a>
+            <a>패스트푸드</a>
+            <!-- 네비 교육용 로고 end-->
+        </nav>
+        <!-- 네비 이전 홈버튼 -->
+        <nav class="menu pt-2 pb-2">
+            <a class="previous-bt" href="#">이전으로</a>
+            <a class="home-back" href="index.html">홈으로</a>
+        </nav>
+        <!-- 네비 이전 홈버튼 end-->
+        <!-- 콘텐츠 화면3 -->
+        <div class="main-content3 m-0 p-3">
+            <div class="btnC_wrap">
+                <div class="right">
+                    <div class="navi_right_wrap">
+                        <div class="btnC_navi navi_btnC1">추천메뉴</div>
+                        <div class="btnC_navi navi_btnC2">햄버거</div>
+                        <div class="btnC_navi navi_btnC3">디저트/치킨</div>
+                        <div class="btnC_navi navi_btnC4">음료/커피</div>
+                    </div>
+                    <!-- 왼쪽 메인 -->
+                    <div class="right_main">
+                        <div class="right_main_wrap">
+
+                            <!-- <div class="card">
+                                <img src="/img/chicken_burger.png" class="card-img-top" alt="이미지없음">
+                                <div class="card-body">
+                                    <p class="card-title">베이컨토마토버거</p>
+                                    <p class="card-text">10000 </p>
+                                </div>
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="left">
+                    <div>총주문내역</div>
+                    <div class="left_main">
+                        <table>
+                            <thead>
+                                <tr bgcolor="#ffc31f">
+                                    <th width="350" height="50">상품명</th>
+                                    <th width="200" height="50">단가</th>
+                                    <th width="50" height="50"></th>
+                                    <th width="100" height="50">수량</th>
+                                    <th width="50" height="50"></th>
+                                    <th width="200" height="50">금액</th>
+                                </tr>
+                            </thead>
+                            <tbody id="right-up-content">
+                                <!-- <tr bgcolor="#FFFFFF">
+                                    <td align="center" width="400" height="50">스타벅스 더블샷</td>
+                                    <td align="center" width="200" height="50">1,500</td>
+                                    <td align="center" width="50" height="50"><img src="img/minusB.svg"
+                                            style="height: 30%;" alt="" srcset=""></td>
+                                    <td align="center" width="100" height="50" class="goodNum">1</td>
+                                    <td align="center" width="50" height="50"><img src="/img/plusB.svg"
+                                            style="height: 30%;" alt="" srcset=""></td>
+                                    <td width="200" height="50">1,500</td>
+                                </tr> -->
+                            </tbody>
+
+                            <tfoot>
+                                <tr bgcolor="#ffc31f" align="center">
+                                    <td align="left" style="width: 50%;" height="50">합계&nbsp; <input id="allPrice"
+                                            type="text" style="width: 50%;"></td>
+                                    <td align="right" style="width: 50%;" height="50">총수량 &nbsp; <input type="text"
+                                            id="allSum" style="width: 50%;"></td>
+                                </tr>
+                                <tr align="center" style="padding: 10px; color: white;">
+                                    <td style="width: 20%;" height="50" class="rightBtn">결제하기</td>
+                                    <td style="width: 2%;" height="50"></td>
+                                    <td style="width: 20%;" height="50" class="rightBtn2">전체취소</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 콘텐츠 화면4 -->
+        <div class="main-content4 m-0 p-3">
+            <div class="main-content4-wrap">
+                <div class="content4-left">
+                    <div class="content4-left-up">
+                        <table>
+                            <thead>
+                                <tr bgcolor="#000000" style="color: #FFFFFF;">
+                                    <th width="400" height="50">제품</th>
+                                    <th width="200" height="50">단가</th>
+                                    <th width="400" height="50">금액</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr bgcolor="#FFFFFF">
+                                    <td align="center" width="400" height="50">스타벅스 더블샷</td>
+                                    <td align="center" width="200" height="50">1,500</td>
+                                    <td align="center" width="400" height="50">5,500</td>
+                                </tr> -->
+
+                            </tbody>
+                            <tfoot bgcolor="#FFFFFF">
+                                <tr bgcolor="#000000" style="color: #FFFFFF;">
+                                    <th width="400" height="50">주문금액</th>
+                                    <th width="200" height="50">할인금액</th>
+                                    <th width="400" height="50">결제할금액</th>
+                                </tr>
+                                <tr bgcolor="#000000" style="color: #FFFFFF;">
+                                    <td width="400" height="50" class="orderPrice">5,0000</td>
+                                    <td width="200" height="50"></td>
+                                    <td width="400" height="50" class="orderAllPrice">500,0000</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="cotent4-left-down" style="background-color: #FFFFFF;">
+
+                    </div>
+                </div>
+                <div class="content4-right">
+                    <div class="content4-right-wrap">
+                        <div class="right-content">
+                            <div class="right-content-up">Step1 포장을 선택하세요</div>
+                            <div class="right-content-down1">
+                                <div class="right-cotent-btn">
+                                    <div class="bgRimg1">$$$</div>
+                                    <div class="right-cotent-btn-text">포장</div>
+                                </div>
+                                <div class="right-cotent-btn">
+                                    <div class="bgRimg2">$$$</div>
+                                    <div class="right-cotent-btn-text">매장</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-content">
+                            <div class="right-content-up">Step2 할인/적립을 선택하세요</div>
+                            <div class="right-content-down1">
+                                <div class="right-cotent-btn" style="filter: grayscale(1) blur(1.5px) opacity(0.3) !important; pointer-events: none !important;" >
+                                    <div class="bgRimg3">$$$</div>
+                                    <div>제휴사 할인</div>
+                                </div>
+                                <div class="right-cotent-btn" style="filter: grayscale(1) blur(1.5px) opacity(0.3) !important; pointer-events: none !important;">
+                                    <div class="bgRimg4">sdf</div>
+                                    <div>포인트 적립/할인</div>
+                                </div>
+                                <div class="right-cotent-btn">
+                                    <div class="bgRimg5">sdf</div>
+                                    <div>선택 없음</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-content">
+                            <div class="right-content-up">Step3 결제를 선택하세요</div>
+                            <div class="right-content-down1">
+                                <div class="right-cotent-btn">
+                                    <div class="bgRimg6">sdf</div>
+                                    <div>신용/체크 카드</div>
+                                </div>
+                                <div class="right-cotent-btn"style="filter: grayscale(1) blur(1.5px) opacity(0.3) !important; pointer-events: none !important;">
+                                    <div class="bgRimg7">sdf</div>
+                                    <div>모바일/바코드/페이</div>
+                                </div>
+                                <div class="right-cotent-btn"style="filter: grayscale(1) blur(1.5px) opacity(0.3) !important; pointer-events: none !important;">
+                                    <div class="bgRimg8">sdf</div>
+                                    <div>교통카드</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div></div>
+                <div class="content4-footer">
+                    <div class="content4-footer-cancel">취소하기</div>
+                    <div class="content4-footer-extraOrder">추가주문</div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- 컨테이너end -->
+    </div>
+
+
+    <!-- 모달1  -->
+    <div id="modal_container">
+        <div class="modal_innerBox">
+            <div class="modal_top"> <span class="modal_top_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;세트로
+                    드시겠어요?</span> <span class="modal_x">d</span> </div>
+            <div class="modal_mid">
+                <div class="modal_btn">
+                    <img src="./img/mainA.svg" alt="">
+                    <div class="modal_text">버거만 <br> <span class="modal_sub">1000</span> </div>
+                </div>
+                <div class="modal_btn">
+                    <img src="./img/set.svg" alt="">
+                    <div class="modal_text">세트로 <br> <span class="modal_sub">1000</span> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달2  -->
+    <div id="modal_container2">
+        <div class="modal_innerBox2">
+            <div class="modal_top2"> <span class="modal_top_title2"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;세트 디저트
+                    1개를 선택해주세요</span> <span class="modal_x2">d</span> </div>
+            <div class="modal_top3">
+                <div class="set_side1">세트_디저트</div>
+                <div class="set_side2">세트_드링크</div>
+            </div>
+            <div class="modal_mid2">
+                <!--<div class="card">
+                    <img src="/img2/A-001.png" class="card-img-top" alt="이미지없음">
+                    <div class="card-body">
+                        <p class="card-title">베이컨토마토버거</p>
+                        <p class="card-text">10000 </p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달3 신용체크 카드  -->
+    <div id="modal_container3">
+        <div class="modal_innerBox3">
+            <div class="modal_top3"> <span class="modal_top_title3">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;신용체크카드</span> <span class="modal_x3">d</span> </div>
+            <div class="modal_mid3">
+                <div class="modal3_card_img">
+                    <div>*그림과 같이 카드를 넣어주세요 <br>
+                        (IC칩이 단말기에 투입되도록 넣어주세요)</div>
+                    <img src="./img/cardInsert.svg" alt="">
+                </div>
+                <div class="modal3_down">확인</div>
+                <div class="modal3_text">[KICC 리더기] 카드 삽입 대기</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달4 영수증 발행  -->
+    <div id="modal_container4">
+        <div class="modal_innerBox4">
+            <div class="modal_top4"> <span class="modal_top_title4">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;영수증을 발행 하시겠습니까?</span> <span
+                    class="modal_x4">d</span> </div>
+            <div class="modal_mid4">
+                <div class="modal4_card">
+                    <div class="modal_title">결제영수증이 필요하신 <br>
+                        고객께서는 발행버튼을 눌러주세요</div>
+
+                    <div class="modal4_img">이미지 없음</div>
+                    <div>미발행 선택 시 대기번호만 출력</div>
+                </div>
+                <div class="modal4_down">
+                    <div class="modal4_btn1">발행</div>
+                    <div class="modal4_btn2">미발행</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달5 주문번호  -->
+    <div id="modal_container5">
+        <div class="modal_innerBox5">
+            <div class="modal5_title">주문번호</div>
+            <div class="modal5_num">253</div>
+            <div class="modal5_content">
+                <div>메뉴가 준비 되면 주문번호 호출 <br>
+                    모니터로 안내해 드립니다</div>
+                <div class="modal5_img">이미지</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 프린트 모달6 -->
+    <div id="modal_container6">
+        <div class="modal_innerBox6">
+        </div>
+    </div>
+
+</body>
+<script src="bootstrap.min.js"></script>
+
+<!-- 자료 -->
+<script src="items.js"></script>
+<script src="script.js"></script>
+
+</html>

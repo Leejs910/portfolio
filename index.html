@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>이재서 | Portfolio</title>
+
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <style>
+        /* 1. 디자인 변수 설정 (다크모드가 기본) */
+        :root {
+            --bg: #0f172a;
+            /* 진한 네이비 블랙 */
+            --card: #1e293b;
+            /* 카드 배경 */
+            --text: #f1f5f9;
+            /* 밝은 회색 글자 */
+            --sub-text: #94a3b8;
+            /* 서브 글자 */
+            --accent: #38bdf8;
+            /* 포인트 블루 */
+            --border: #334155;
+            /* 경계선 */
+            /* --shadow: rgba(0, 0, 0, 0.3); */
+            --accent-glow: rgba(56, 189, 248, 0.3);
+            --link-color: #38bdf8;
+        }
+
+        /* 2. 라이트 모드 (변수 업데이트) */
+        body.light-mode {
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #0f172a;
+            --accent: #0284c7;
+            /* 조금 더 진한 블루 */
+            --border: #e2e8f0;
+            /* 라이트 모드용 연한 그림자 효과 */
+            --accent-glow: rgba(2, 132, 199, 0.1);
+            --link-color: #0284c7;
+        }
+
+        body.light-mode .header-img {
+            border: none;
+            box-shadow: none;
+        }
+
+        /* 3. 기본 스타일 & 타이포그래피 */
+        * {
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            margin: 0;
+            padding: 80px 20px;
+            /* 상하 여백 확대 */
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        /* 3. 이미지 스타일 (변수 사용) */
+        .header-img {
+            display: block;
+            margin: 0 auto 30px auto;
+
+            /* 크기 및 비율 고정 */
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+
+            /* 테두리 및 그림자 효과 완전 삭제 */
+            border: none;
+            box-shadow: none;
+
+            /* 이미지가 교체될 때 부드러운 느낌을 위해 */
+            transition: opacity 0.3s ease;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            /* 크게 키움 */
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        /* 4. 다크/라이트 모드 토글 버튼 */
+        .mode-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            /* 1. 내부 콘텐츠 중앙 정렬 */
+            min-width: 150px;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 2px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 40px;
+            white-space: nowrap;
+            /* 3. 글자가 두 줄로 넘어가는 것 방지 */
+            transition: all 0.3s ease;
+        }
+
+        .mode-toggle:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+            transform: translateY(-2px);
+        }
+
+        /* 하이라이트 박스 */
+        .highlight-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 30px;
+            margin-top: 40px;
+            border-radius: 16px;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .highlight-box strong {
+            color: var(--accent);
+        }
+
+        /* 프로젝트 그리드 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 4px 6px var(--shadow);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 25px -5px var(--shadow);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .card p {
+            color: var(--sub-text);
+            font-size: 1.05rem;
+        }
+
+        /* 새 창으로 열리는 카드 제목 옆에 화살표 추가 */
+        .card h3::after {
+            content: " ↗";
+            /* 화살표 아이콘 */
+            font-size: 0.9rem;
+            margin-left: 5px;
+            opacity: 0.6;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        /* 호버 시 화살표가 살짝 위로 튕기게 함 */
+        .card:hover h3::after {
+            transform: translate(2px, -2px);
+            opacity: 1;
+        }
+
+        * 뱃지들을 감싸는 컨테이너 */ .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            /* 뱃지 사이 간격 */
+            margin-top: 20px;
+        }
+
+        /* 개별 뱃지 스타일 */
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            padding: 4px 12px;
+            border-radius: 50px;
+            /* 알약 모양 */
+
+            /* 포인트! 배경색은 연하게, 글자색은 진하게 */
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+
+            /* 테두리는 아주 얇고 연하게 (선택 사항) */
+            border: 1px solid rgba(56, 189, 248, 0.2);
+
+            text-transform: uppercase;
+            /* 대문자로 통일하면 더 정돈되어 보임 */
+            transition: all 0.2s ease;
+        }
+
+        /* 라이트 모드일 때 가독성 조절 */
+        body.light-mode .tag {
+            background: rgba(2, 132, 199, 0.08);
+            border-color: rgba(2, 132, 199, 0.15);
+        }
+
+        /* 카드 호버 시 뱃지도 살짝 강조 */
+        .card:hover .tag {
+            background: var(--accent);
+            color: var(--card);
+            /* 배경색과 대비되는 색상으로 변경 */
+            border-color: var(--accent);
+        }
+        /* 하이라이트 박스 내 링크 스타일 */
+.highlight-box a {
+    color: var(--link-color);
+    text-decoration: none;      /* 밑줄 제거 (깔끔함) */
+    font-weight: 600;
+    transition: all 0.2s ease;
+    word-break: break-all;      /* 모바일에서 URL이 길어질 때 줄바꿈 방지 */
+    /* border-bottom: 1px dashed var(--link-color); 세련된 밑줄 효과 */
+    padding-bottom: 2px;
+}
+
+.highlight-box a:hover {
+    filter: brightness(1.2);    /* 마우스 올리면 살짝 더 밝게 */
+    border-bottom-style: solid; /* 호버 시 실선으로 변경 */
+}
+
+.highlight-box span {
+    opacity: 0.8;
+    font-size: 0.9rem;
+    margin-right: 5px;
+}
+    </style>
+</head>
+
+<body class="dark-mode">
+    <div class="container">
+        <header>
+            <img src="./img/paste_blue.webp" alt="Profile" class="header-img" id="header-img">
+            <h1>LEE JAESEO PORTFOLIO</h1>
+
+            <button class="mode-toggle" onclick="toggleMode()">
+                <span id="mode-icon">🌙</span>
+                <span id="mode-text">다크 모드</span>
+            </button>
+
+            <div class="highlight-box">
+                <strong>[ Portfolio works ]</strong><br>
+                Self-directed Project(자기주도 프로젝트)<br>
+                <small style="opacity: 0.7;">본 포트폴리오는 데스크톱 환경(1920px)에 최적화되어 있습니다 <br></small>
+                
+                <div style="margin-top: 10px;">
+                    <span>🔗 GitHub:</span>
+                <a href="https://github.com/Leejs910" target="_blank" rel="noopener noreferrer">github.com/Leejs910</a>
+
+                </div>
+                
+            </div>
+        </header>
+
+        <div class="grid">
+            <a href="./gasGs20230324-main/index.html" class="card" target="_blank" rel="noopener noreferrer"
+                aria-label="셀프 주유 시뮬레이터 (새 창에서 열기)">
+                <h3>셀프 주유 시뮬레이터</h3>
+                <p>셀프 주유소 키오스크 교육앱입니다.</p>
+                <div class="tech-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JAVASCRIPT</span>
+                </div>
+            </a>
+
+            <a href="https://spotthediffer.vercel.app" class="card" target="_blank" rel="noopener noreferrer"
+                aria-label="다른 그림 찾기 앱 (새 창에서 열기)">
+                <h3>다른 그림 찾기</h3>
+                <p>두 이미지 사이의 미세한 차이를 찾아내는 반응형 게임 앱입니다.</p>
+                <div class="tech-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JAVASCRIPT</span>
+                    <span class="tag">PHOTOSHOP</span>
+                </div>
+            </a>
+            <a href="./foodkiosk-main/index.html" class="card" target="_blank" rel="noopener noreferrer"
+                aria-label="음식적 키오스크 (새 창에서 열기)">
+                <h3>음식점 키오스크</h3>
+                <p>음식점 키오스크 교육앱입니다.</p>
+                <div class="tech-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JAVASCRIPT</span>
+                </div>
+            </a>
+
+            <a href="./ktx-main/index.html" class="card" target="_blank" rel="noopener noreferrer"
+                aria-label="ktx 예매 (새 창에서 열기)">
+                <h3>KTX</h3>
+                <p>KTX 예약 교육앱입니다.</p>
+                <div class="tech-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JAVASCRIPT</span>
+                </div>
+            </a>
+
+            <a href="./busTerminal-main/index.html" class="card" target="_blank" rel="noopener noreferrer"
+                aria-label="버스 터미널 (새 창에서 열기)">
+                <h3>버스 터미널</h3>
+                <p>버스 터미널 키오스크 교육앱입니다.</p>
+                <div class="tech-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JAVASCRIPT</span>
+                </div>
+            </a>
+            <a href="./fastFood-main/index.html" class="card" target="_blank" rel="noopener noreferrer"
+                aria-label="fastfood (새 창에서 열기)">
+                <h3>FASTFOOD 키오스크</h3>
+                <p>FASTFOOD 키오스크 교육앱입니다.</p>
+                <div class="tech-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JAVASCRIPT</span>
+                </div>
+            </a>
+
+        </div>
+
+
+    </div>
+
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            const icon = document.getElementById('mode-icon');
+            const text = document.getElementById('mode-text');
+            const img = document.getElementById('header-img'); // 이미지 요소 가져오기
+
+            body.classList.toggle('light-mode');
+
+            if (body.classList.contains('light-mode')) {
+                icon.innerText = '☀️';
+                text.innerText = '라이트 모드';
+                img.src = './img/paste_black.webp'; // 라이트 모드용 이미지 경로
+            } else {
+                icon.innerText = '🌙';
+                text.innerText = '다크 모드';
+                img.src = './img/paste_blue.webp';  // 다크 모드용 이미지 경로 (기본값)
+            }
+        }
+    </script>
+</body>
+
+</html>

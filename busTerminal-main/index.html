@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>버스터미널 | 이재서</title>
+  <!-- 스타일 -->
+  <link rel="stylesheet" href="style/style.css">
+  <!-- 부트스트랩 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+
+  <div class="container-fluid m-0 p-0">
+    <!-- 네비 교육용 로고 -->
+    <nav class="navi-up">
+      <a>교육용</a>
+      <a>버스 터미널</a>
+      <!-- 네비 교육용 로고 end-->
+    </nav>
+    <!-- 네비 이전 홈버튼 -->
+    <nav class="menu pt-2 pb-2">
+      <a class="previous-bt" href="#">이전으로</a>
+      <span class="nav_text">버스 터미널 무인 발매기 입니다</span>
+      <a class="home-back" href="index.html">홈으로</a>
+    </nav>
+    <!-- 네비 이전 홈버튼 end-->
+    <!-- 콘텐츠 화면1 -->
+    <div class="main-content m-0 p-3">
+      <div class="btnA_title">한차원 높은 <br> 전국 시외버스 통합 예매 발권 시스템으로 <br>안전하고 편안하게 </div>
+      <div class="btnA_wrap">
+        <div class="btnA" id="BTNA">당일/예매발권</div>
+        <div class="btnA"style="opacity: 0.2 !important; pointer-events: none !important;">모바일/인터넷발권</div>
+      </div>
+    </div>
+
+    <!-- 콘텐츠 화면2 -->
+    <div class="main-content2 m-0 p-3">
+      <div class="left_content">
+        <div class="start"> <span>출발터미널</span><span class="start_station">&nbsp;</span> </div>
+        <div class="arrive"><span>도착지선택</span><span class="start_station">선택</span></div>
+        <div class="start_day"><span>출발일</span><span class="start_station">00/00</span></div>
+        <div class="start_time"><span>출발시간선택</span><span class="start_station">00:00</span></div>
+      </div>
+      <!-- 오른쪽 콘텐츠 -->
+      <div class="right_content">
+        <div class="right_content_up">
+          <a>전체</a>
+          <a>서울</a>
+          <a>인천/경기</a>
+          <a>강원</a>
+          <a>대전/충남</a>
+          <a>충북</a>
+          <a>광주/전남</a>
+          <a>전북</a>
+          <a>부산/경남</a>
+          <a>대구/경북</a>
+        </div>
+        <div class="right_content_down">
+          <div class="right_wrap">
+            <!-- <a>대전</a>
+                      <a>대전</a> -->
+          </div>
+        </div>
+      </div>
+      <!-- 오른쪽 콘텐츠2 -->
+      <div class="right_content2">
+        <div class="bus_timeline">
+          <div class="timeline_wrap">
+            <div class="timeline_up">
+              <div>출발시간</div>
+              <div>도착지</div>
+              <div>운행형태</div>
+              <div>등급</div>
+              <div>운수사</div>
+              <div>소요시간</div>
+              <div>상태</div>
+              <div>잔여석</div>
+              <div>총좌석</div>
+              <div>배차선택</div>
+            </div>
+            <!-- <div class="timeline_down">
+                        <div>12:00</div>
+                        <div>동서울</div>
+                        <div>직행</div>
+                        <div>일반</div>
+                        <div>경기고속</div>
+                        <div>01:30</div>
+                        <div>정기</div>
+                        <div>20</div>
+                        <div>28</div>
+                        <div>선택</div>
+                    </div> -->
+          </div>
+        </div>
+        <div class="buscharge_info">
+          <div>요금 : <span>7700원</span> </div>
+          <div>/</div>
+          <div>경유지 정보 : 원주 -><span id="buscharge_info_foot"> 서울</span> </div>
+        </div>
+      </div>
+
+      <!-- 오른쪽콘텐츠3 -->
+      <div class="right_content3">
+        <div class="busseat_up">
+          <div class="busseat_up_wrap">
+            <div class="busseat_head">어른(₩7,700)</div>
+            <div class="plusMinusBt">
+              <a class="minusFun">minus</a>
+              <form class="manNum">2</form>
+              <a class="plusFun">plus</a>
+            </div>
+          </div>
+        </div>
+        <div class="busseat_mid">
+          <div class="busImg">
+            <div class="busBgImg">
+              <div style="padding-top:10px;">출입문</div>
+              <div class="driveSeat">운전석</div>
+            </div>
+            <div class="busSeatImg">
+              <div class="seatBlank">3</div>
+              <div class="seatBlank">6</div>
+              <div class="seatBlank">9</div>
+              <div class="seatBlank">12</div>
+              <div class="seatBlank">15</div>
+              <div class="seatBlank">18</div>
+              <div class="seatSold">21</div>
+              <div class="seatBlank">25</div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div class="seatBlank">24</div>
+              <div class="seatBlank">2</div>
+              <div class="seatBlank">5</div>
+              <div class="seatBlank">8</div>
+              <div class="seatBlank">11</div>
+              <div class="seatBlank">14</div>
+              <div class="seatBlank">17</div>
+              <div class="seatBlank">21</div>
+              <div class="seatBlank">24</div>
+              <div class="seatBlank">1</div>
+              <div class="seatSold">4</div>
+              <div class="seatSold">7</div>
+              <div class="seatBlank">10</div>
+              <div class="seatSold">13</div>
+              <div class="seatSold">16</div>
+              <div class="seatBlank">19</div>
+              <div class="seatBlank">22</div>
+            </div>
+          </div>
+        </div>
+        <div class="busseat_tail">
+          <div class="ticketSum">
+            <div style="background-color:#666699; border-bottom: solid 2px black; color: white;">총 수량</div>
+            <div style="background-color:white;">0</div>
+          </div>
+          <div class="priceSum">
+            <div style="background-color:#666699; border-bottom: solid 2px black; color: white;">총 금액</div>
+            <div style="background-color:white;">0</div>
+          </div>
+          <div class="busseatBt">선택완료</div>
+        </div>
+      </div>
+
+      <!-- 오른쪽 콘텐츠4 -->
+      <div class="right_content4">
+        <div class="ticketUp">
+          티켓내역 확인하기
+        </div>
+        <div class="ticketMid">
+          <div class="ticketMidIn">
+            <div style="border-right: 2px solid black; background-color: #03A6F8;">출발지</div>
+            <div>원주</div>
+          </div>
+          <div class="ticketMidIn">
+            <div style="border-right: 2px solid black; background-color: #03A6F8;">좌석</div>
+            <div>17</div>
+          </div>
+
+          <div class="ticketMidIn">
+            <div style="border-right: 2px solid black; background-color: #03A6F8;">출발일자</div>
+            <div>2023 3월 4일</div>
+          </div>
+          <div class="ticketMidIn">
+            <div style="border-right: 2px solid black; background-color: #03A6F8;">경유지</div>
+            <div>17</div>
+          </div>
+          <div class="ticketMidIn">
+            <div style="border-right: 2px solid black; background-color: #03A6F8;">버스등급</div>
+            <div>17</div>
+          </div>
+          <div class="ticketMidIn">
+            <div style="border-right: 2px solid black; background-color: #03A6F8;">도착지</div>
+            <div>17</div>
+          </div>
+          <div class="ticketMidIn">
+            <div style="border-right: 2px solid black; background-color: #03A6F8;">매수</div>
+            <div>1</div>
+          </div>
+          <div class="ticketMidIn">
+            <div style="border-right: 2px solid black; background-color: #03A6F8;">출발시간</div>
+            <div>17</div>
+          </div>
+          <div class="ticketMidIn">
+            <div style="border-right: 2px solid black; background-color: #03A6F8;">버스회사</div>
+            <div>경기고속</div>
+          </div>
+          <div class="ticketMidIn">
+            <div style="border-right: 2px solid black; background-color: #03A6F8;">요금</div>
+            <div>6000</div>
+          </div>
+
+        </div>
+        <div class="ticketDown">
+          카드결제
+        </div>
+      </div>
+
+      <!-- 오른쪽 콘텐츠5 -->
+      <div class="right_content5">
+        <div class="cardUp">
+          카드결제
+        </div>
+        <div class="cardMid">
+          <div>결제하실 카드를 리더기에 삽입해 주세요 <br>
+            <span style="font-size:15px; color: gray;">일부 직불카드 및 선불카드의 사용이 불가능 할 수 있으므로 이용시 참고 바랍니다</span>
+          </div>
+          <div class="cardImg"></div>
+          <div class="cardBt">확인</div>
+
+        </div>
+
+      </div>
+
+      <!-- 오른쪽 콘텐츠6 -->
+      <div class="right_content6">
+        <div class="outUp">
+          발 권
+        </div>
+        <div class="outMid">
+
+          <div class="outMidInfo">
+            <div class="outTicketUp">
+              <div>출발지 <br><span class="outStart">원주</span></div>
+              <div>도착지 <br><span class="outArrive">원주</span></div>
+              <div>출발일 <br><span class="outDay">2023:03:05:22:00</span></div>
+              <div>운송회사 <br><span>경기고속</span></div>
+              <div>버스등급 <br><span>일반</span></div>
+            </div>
+            <div class="outTicketDown">
+              <div class="outTicketSort">
+                <table>
+                  <thead>
+                    <th>승차권종류</th>
+                    <th>요금</th>
+                    <th>좌석</th>
+                    <th>발권상태</th>
+                  </thead>
+                  <tbody class="TR">
+                    <!-- <tr>
+                      <td>어른</td>
+                      <td>7,700</td>
+                      <td>17</td>
+                      <td>발권완료</td>
+                    </tr> -->
+                  </tbody>
+                </table>
+              </div>
+              <div class="outTicketImg">
+                <div style="color: red; background-color:white;">티켓 나오는 곳</div>
+              </div>
+            </div>
+          </div>
+          <div class="outBt">확인</div>
+
+        </div>
+
+      </div>
+
+      <!-- 컨테이너end -->
+    </div>
+
+
+    <!-- 모달1  -->
+    <div class="modal_container_fade" id="modal_container">
+      <div class="modal_innerBox">
+        수량을 선택하시면 <br> 좌석을 선택하실 수 있습니다.
+        <span style="font-size: 30px; color:brown; margin-top: 10px;">운전기사 윗자리 탑승자제</span>
+        <span style="font-size: 30px; color:brown;margin-bottom: 10px;">창가 좌석 우선 선택</span>
+        <span style="margin-bottom: 10px;">일부 버스의 경우 실제 좌석 <br> 배치와 다를 수 있습니다.</span>
+        <span>할인 승차권의 경우 탑승 시 <br> 학생증 소지가 필요합니다. </span>
+      </div>
+    </div>
+
+    <!-- 모달2 로딩  -->
+    <div class="modal_container_fade2" id="modal_container2">
+      <div class="modal_innerBox2">
+        <div>잠시만 기다려 주십시오</div>
+        <div>&nbsp;</div>
+        <div class="loader"></div>
+      </div>
+    </div>
+
+    <!-- 모달3  -->
+    <div class="modal_container_fade3" id="modal_container3">
+      <div class="modal_innerBox3">
+        <div class="modal3_alert">알림</div>
+        <div>발권이 완료 되었습니다 <br>
+          인쇄상태, 수량 이상 시 <br>
+          창구에 문의 해 주세요</div>
+        <div class="modal3_bt">확인</div>
+      </div>
+    </div>
+
+    <!-- 프린트 모달4 -->
+    <div id="modal_container4">
+      <div class="modal_innerBox4">
+      </div>
+    </div>
+
+    <!-- 부트스트랩 javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"></script>
+    <!-- 자료 -->
+    <script src="station.js"></script>
+    <!-- 스크립트 -->
+    <script src="script.js"></script>
+
+  </div>
+</body>
+
+</html>
