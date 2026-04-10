@@ -11,7 +11,9 @@
 
 ┣ 📂 ktx
 
-┃ ┣ 📄 index.html
+┣ 📂 img
+
+┃ 📄 index.html
 
 
 
