@@ -1,10 +1,16 @@
 포트폴리오 키오스크 작업물 통합
 📦 portfolio
+
 ┣ 📂 busterminal
+
 ┣ 📂 fastfood
+
 ┣ 📂 foodkiosk
+
 ┣ 📂 gasStation
+
 ┣ 📂 ktx
+
 ┃ ┣ 📄 index.html
 
 
