@@ -15,6 +15,9 @@
 
 
 
+
+
+
 UI/UX: CSS3, SCSS, Responsive Design
 
 Development: HTML5 (Semantic Markup), Vanilla JavaScript (ES6+)
