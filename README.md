@@ -1,6 +1,15 @@
 포트폴리오 키오스크 작업물 통합
+📦 portfolio
+┣ 📂 busterminal
+┣ 📂 fastfood
+┣ 📂 foodkiosk
+┣ 📂 gasStation
+┣ 📂 ktx
+┃ ┣ 📄 index.html
 
-UI/UX: CSS3, SCSS (컴파일 활용), Responsive Design
+
+
+UI/UX: CSS3, SCSS, Responsive Design
 
 Development: HTML5 (Semantic Markup), Vanilla JavaScript (ES6+)
 
