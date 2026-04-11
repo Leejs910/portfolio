@@ -242,27 +242,32 @@
             /* 배경색과 대비되는 색상으로 변경 */
             border-color: var(--accent);
         }
+
         /* 하이라이트 박스 내 링크 스타일 */
-.highlight-box a {
-    color: var(--link-color);
-    text-decoration: none;      /* 밑줄 제거 (깔끔함) */
-    font-weight: 600;
-    transition: all 0.2s ease;
-    word-break: break-all;      /* 모바일에서 URL이 길어질 때 줄바꿈 방지 */
-    /* border-bottom: 1px dashed var(--link-color); 세련된 밑줄 효과 */
-    padding-bottom: 2px;
-}
+        .highlight-box a {
+            color: var(--link-color);
+            text-decoration: none;
+            /* 밑줄 제거 (깔끔함) */
+            font-weight: 600;
+            transition: all 0.2s ease;
+            word-break: break-all;
+            /* 모바일에서 URL이 길어질 때 줄바꿈 방지 */
+            /* border-bottom: 1px dashed var(--link-color); 세련된 밑줄 효과 */
+            padding-bottom: 2px;
+        }
 
-.highlight-box a:hover {
-    filter: brightness(1.2);    /* 마우스 올리면 살짝 더 밝게 */
-    border-bottom-style: solid; /* 호버 시 실선으로 변경 */
-}
+        .highlight-box a:hover {
+            filter: brightness(1.2);
+            /* 마우스 올리면 살짝 더 밝게 */
+            border-bottom-style: solid;
+            /* 호버 시 실선으로 변경 */
+        }
 
-.highlight-box span {
-    opacity: 0.8;
-    font-size: 0.9rem;
-    margin-right: 5px;
-}
+        .highlight-box span {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            margin-right: 5px;
+        }
     </style>
 </head>
 
@@ -281,13 +286,12 @@
                 <strong>[ Portfolio works ]</strong><br>
                 Self-directed Project(자기주도 프로젝트)<br>
                 <small style="opacity: 0.7;">본 포트폴리오는 데스크톱 환경(1920px)에 최적화되어 있습니다 <br></small>
-                
+
                 <div style="margin-top: 10px;">
                     <span>🔗 GitHub:</span>
-                <a href="https://github.com/Leejs910" target="_blank" rel="noopener noreferrer">github.com/Leejs910</a>
-
+                    <a href="https://github.com/Leejs910" target="_blank" rel="noopener noreferrer">github.com/Leejs910</a>
                 </div>
-                
+                 <div>✉ Mail : jaeseo90@naver.com</div>
             </div>
         </header>
 
@@ -311,7 +315,6 @@
                     <span class="tag">HTML</span>
                     <span class="tag">CSS</span>
                     <span class="tag">JAVASCRIPT</span>
-                    <span class="tag">PHOTOSHOP</span>
                 </div>
             </a>
             <a href="./foodkiosk-main/index.html" class="card" target="_blank" rel="noopener noreferrer"
@@ -357,12 +360,100 @@
                 </div>
             </a>
 
+            </a>
         </div>
+
+        <header>
+            <div class="highlight-box" style="margin-top: 80px;">
+                <strong>[ Portfolio works ]</strong><br>
+                Design Project<br>
+                <small style="opacity: 0.7;">디자인 작업물 포트폴리오 <br></small>
+            </div>
+        </header>
+        <div class="grid">
+
+
+            <a href="javascript:void(0);" class="card" onclick="openPdfReader('./img/brand_iden.pdf')"
+                aria-label="PDF 포트폴리오 보기 (새 창에서 열기)">
+                <h3>브랜드 아이덴티티 디자인</h3>
+                <p>2020년 학교 수업 프로젝트 </p>
+                <div class=" tech-tags">
+                    <span class="tag">PHOTOSHOP</span>
+                    <span class="tag">ILLUSTRATOR</span>
+                </div>
+            </a>
+            <a href="javascript:void(0);" class="card" onclick="openPdfReader('./img/brand_iden2.pdf')"
+                aria-label="PDF 포트폴리오 보기 (새 창에서 열기)">
+                <h3>브랜드 아이덴티티 디자인</h3>
+                <p>2021년 학교 수업 프로젝트</p>
+                <div class=" tech-tags">
+                    <span class="tag">PHOTOSHOP</span>
+                    <span class="tag">ILLUSTRATOR</span>
+                </div>
+            </a>
+
+            <a href="javascript:void(0);" class="card" onclick="openPdfReader('./img/char_poster.pdf')"
+                aria-label="PDF 포트폴리오 보기 (새 창에서 열기)">
+                <h3>캐릭터, 포스터 디자인</h3>
+                <p>2019~2022 캐릭터 포스터 디자인</p>
+                <div class=" tech-tags">
+                    <span class="tag">PHOTOSHOP</span>
+                    <span class="tag">ILLUSTRATOR</span>
+                </div>
+            </a>
+
+            <a href="javascript:void(0);" class="card" onclick="openSubPage('./wepPage-main/index.html')">
+                <h3>사내 로고 디자인</h3>
+                <p>FASTFOOD 키오스크 교육앱입니다.</p>
+                <div class="tech-tags">
+                    <span class="tag">PHOTOSHOP</span>
+                    <span class="tag">ILLUSTRATOR</span>
+                </div>
+            </a>
+
+        </div>
+
+
+        <header>
+            <div class="highlight-box" style="margin-top: 80px;">
+                <strong>[ Portfolio works ]</strong><br>
+                Webtoon Art Project<br>
+                <small style="opacity: 0.7;">만화 그림 작업물<br></small>
+            </div>
+        </header>
+
+        <div class="grid">
+
+            <a href="javascript:void(0);" class="card" onclick="openImageViewerRange(1, 15)" aria-label="이미지 프로젝트 보기">
+                <h3>만화 작업</h3>
+                <p>2019~2021 만화 </p>
+                <div class="tech-tags">
+                    <span class="tag">CLIPSTUDIO</span>
+                    <span class="tag">PHOTOSHOP</span>
+                </div>
+            </a>
+            <a href="javascript:void(0);" class="card" onclick="openImageViewerRange(16, 20)"aria-label="이미지 프로젝트 보기">
+                <h3>그림, 낙서, 기타</h3>
+                <p>2019~2021 그림</p>
+                <div class="tech-tags">
+                    <span class="tag">PHOTOSHOP</span>
+                </div>
+            </a>
+
+        </div>
+
+
+
+
+
+
 
 
     </div>
 
     <script>
+
+
         function toggleMode() {
             const body = document.body;
             const icon = document.getElementById('mode-icon');
@@ -380,6 +471,62 @@
                 text.innerText = '다크 모드';
                 img.src = './img/paste_blue.webp';  // 다크 모드용 이미지 경로 (기본값)
             }
+        }
+
+        // pdf리더기
+        function openPdfReader(pdfUrl) {
+            const isLightMode = document.body.classList.contains('light-mode');
+            const theme = isLightMode ? 'light' : 'dark'; // 현재 모드 파악
+
+            const width = 1400;
+            const height = 900;
+            const left = (window.screen.width / 2) - (width / 2);
+            const top = (window.screen.height / 2) - (height / 2);
+
+            // 주소 뒤에 &theme=light (또는 dark)를 추가합니다.
+            window.open(
+                `./pdfReader-main/index.html?file=${encodeURIComponent(pdfUrl)}&theme=${theme}`,
+                'PDFReader',
+                `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=no`
+            );
+        }
+
+        // 이미지 뷰어
+        function openImageViewer(imgList) {
+            const isLightMode = document.body.classList.contains('light-mode');
+            const theme = isLightMode ? 'light' : 'dark';
+
+            const width = 1400;
+            const height = 900;
+            const left = (window.screen.width / 2) - (width / 2);
+            const top = (window.screen.height / 2) - (height / 2);
+
+            // 파일 리스트와 테마를 함께 전송
+            window.open(
+                `./imageView-main/index.html?files=${imgList}&theme=${theme}`,
+                'ImageViewer',
+                `width=${width},height=${height},left=${left},top=${top},resizable=yes`
+            );
+        }
+
+        function openImageViewerRange(start, end) {
+            let imgList = [];
+            for (let i = start; i <= end; i++) {
+                imgList.push(`${i}.png`); // 숫자에 .png를 붙여 배열 생성
+            }
+            const fileString = imgList.join(','); // '1.png,2.png...' 문자열로 변환
+
+            // 기존 openImageViewer 로직 실행
+            openImageViewer(fileString);
+        }
+
+        // 웹뷰어
+        function openSubPage(pagePath) {
+            const isLightMode = document.body.classList.contains('light-mode');
+            const theme = isLightMode ? 'light' : 'dark';
+
+            // 새 창으로 열면서 테마 정보 전달
+            window.open(`${pagePath}?theme=${theme}`, '_blank');
         }
     </script>
 </body>

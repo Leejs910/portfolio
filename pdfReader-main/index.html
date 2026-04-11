@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PDF READER | LEE JAESEO</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <style>
+    /* 포트폴리오 변수 그대로 이식 #0f172a*/
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --sub-text: #94a3b8;
+      --accent: #38bdf8;
+      --border: #334155;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Pretendard', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    /* 컨트롤바 스타일 */
+    header {
+      height: 60px;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .title {
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+
+    .page-nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* 포트폴리오 뱃지 스타일을 버튼으로 응용 */
+    .btn-nav {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 50px;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-nav:hover {
+      background: var(--accent);
+      color: var(--card);
+    }
+
+    /* PDF 캔버스 영역 */
+    .viewer-main {
+      height: calc(100vh - 60px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+
+    canvas {
+      max-width: 48%;
+      max-height: 100%;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    #page-info {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--sub-text);
+    }
+
+    /* 리더기 전용 라이트 모드 스타일 */
+    body.light-mode {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --accent: #0284c7;
+      --border: #e2e8f0;
+    }
+
+    /* 라이트 모드일 때 PDF 종이 뒤에 그림자가 너무 진하면 조절 */
+    body.light-mode canvas {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 1장 보기 모드일 때의 클래스 */
+    body.single-mode #pdf-canvas-right {
+      display: none;
+    }
+
+    body.single-mode .viewer-main {
+      justify-content: center;
+      /* 캔버스를 화면 정중앙으로 */
+    }
+
+    body.single-mode canvas {
+      max-width: 80%;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="title">DOCUMENT MODULE</div>
+    <div class="page-nav">
+
+      <button class="btn-nav" id="prev-page">PREV</button>
+      <span id="page-info">PAGE <span id="current-page">1</span> / <span id="total-pages">0</span></span>
+      <button class="btn-nav" id="next-page">NEXT</button>
+      <button class="btn-nav" id="view-single">1 PAGE</button>
+      <button class="btn-nav" id="view-spread">2 PAGES</button>
+
+    </div>
+    <div style="width: 100px;"></div>
+  </header>
+
+  <main class="viewer-main">
+    <canvas id="pdf-canvas-left"></canvas>
+    <canvas id="pdf-canvas-right"></canvas>
+  </main>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const pdfFile = urlParams.get('file');
+    const theme = urlParams.get('theme');
+
+    if (theme === 'light') {
+      document.body.classList.add('light-mode');
+    }
+
+    let pdfDoc = null,
+      pageNum = 1,
+      pageRendering = false;
+
+    const canvasL = document.getElementById('pdf-canvas-left'),
+      canvasR = document.getElementById('pdf-canvas-right'),
+      ctxL = canvasL.getContext('2d'),
+      ctxR = canvasR.getContext('2d');
+
+    // PDF 로드
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    pdfjsLib.getDocument(pdfFile).promise.then(pdf => {
+      pdfDoc = pdf;
+      document.getElementById('total-pages').textContent = pdfDoc.numPages;
+      renderSpread(pageNum);
+    });
+
+    function renderSpread(num) {
+      pageRendering = true;
+      // 왼쪽 페이지
+      renderPage(num, canvasL, ctxL);
+      // 오른쪽 페이지 (있을 경우만)
+      if (num + 1 <= pdfDoc.numPages) {
+        canvasR.style.visibility = 'visible';
+        renderPage(num + 1, canvasR, ctxR);
+      } else {
+        canvasR.style.visibility = 'hidden';
+      }
+      document.getElementById('current-page').textContent = num + (num + 1 <= pdfDoc.numPages ? `-${num + 1}` : "");
+    }
+
+    function renderPage(num, canvas, ctx) {
+      pdfDoc.getPage(num).then(page => {
+        const viewport = page.getViewport({ scale: 1.5 });
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        const renderContext = { canvasContext: ctx, viewport: viewport };
+        page.render(renderContext);
+      });
+    }
+
+    // 상단 변수 선언부에 추가
+    let isSpread = true; // 기본값은 디폴트 2장 
+
+    // 2. 보기 모드 전환 (함수 내부 정리)
+    document.getElementById('view-single').addEventListener('click', () => {
+      isSpread = false;
+      document.body.classList.add('single-mode');
+      renderSpread(pageNum);
+      updateActiveButton();
+    });
+
+    document.getElementById('view-spread').addEventListener('click', () => {
+      isSpread = true;
+      if (pageNum % 2 === 0) pageNum -= 1; // 짝수면 홀수로 보정
+      document.body.classList.remove('single-mode');
+      renderSpread(pageNum);
+      updateActiveButton();
+    });
+
+
+
+    // renderSpread 함수 수정 (모드에 따라 다르게 작동하도록)
+    function renderSpread(num) {
+      pageRendering = true;
+
+      // 왼쪽 페이지는 공통으로 렌더링
+      renderPage(num, canvasL, ctxL);
+
+      // 2장 보기 모드이고 다음 페이지가 있을 때만 오른쪽 렌더링
+      if (isSpread && num + 1 <= pdfDoc.numPages) {
+        canvasR.style.visibility = 'visible';
+        renderPage(num + 1, canvasR, ctxR);
+        document.getElementById('current-page').textContent = `${num}-${num + 1}`;
+      } else {
+        canvasR.style.visibility = 'hidden';
+        document.getElementById('current-page').textContent = num;
+      }
+    }
+
+    // 1. 네비게이션 로직 
+    document.getElementById('prev-page').onclick = () => {
+      if (pageNum <= 1) return;
+      const step = isSpread ? 2 : 1;
+      pageNum -= step;
+      if (pageNum < 1) pageNum = 1;
+      renderSpread(pageNum);
+    };
+
+    document.getElementById('next-page').onclick = () => {
+      const step = isSpread ? 2 : 1;
+      if (isSpread) {
+        if (pageNum + 1 >= pdfDoc.numPages) return;
+      } else {
+        if (pageNum >= pdfDoc.numPages) return;
+      }
+      pageNum += step;
+      renderSpread(pageNum);
+    };
+    // 버튼 강조 함수 
+    function updateActiveButton() {
+      document.getElementById('view-single').style.background = isSpread ? 'rgba(56, 189, 248, 0.1)' : 'var(--accent)';
+      document.getElementById('view-single').style.color = isSpread ? 'var(--accent)' : 'var(--card)';
+
+      document.getElementById('view-spread').style.background = isSpread ? 'var(--accent)' : 'rgba(56, 189, 248, 0.1)';
+      document.getElementById('view-spread').style.color = isSpread ? 'var(--card)' : 'var(--accent)';
+    }
+
+    // 리더기 페이지 하단 스크립트에 추가
+        const viewerMain = document.querySelector('.viewer-main');
+
+        viewerMain.addEventListener('click', (e) => {
+            // 1. 클릭한 위치의 가로 좌표(x)와 컨테이너 너비(width)를 가져옵니다.
+            const x = e.clientX;
+            const width = window.innerWidth;
+
+            // 2. 왼쪽 절반 클릭 시 '이전', 오른쪽 절반 클릭 시 '다음'
+            if (x < width / 2) {
+                document.getElementById('prev-page')?.click(); // 기존 버튼 클릭 강제 실행
+                document.getElementById('prev-btn')?.click();  // 이미지 뷰어용
+            } else {
+                document.getElementById('next-page')?.click(); // 기존 버튼 클릭 강제 실행
+                document.getElementById('next-btn')?.click();  // 이미지 뷰어용
+            }
+        });
+
+        // 💡 보너스: 커서 모양 바꾸기 (UX 디테일)
+        viewerMain.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const width = window.innerWidth;
+            viewerMain.style.cursor = x < width / 2 ? 'w-resize' : 'e-resize';
+        });
+  </script>
+</body>
+
+</html>

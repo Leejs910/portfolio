@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Project Detail | 이재서</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <style>
+        /* 메인 페이지의 변수 및 기본 스타일 동일하게 적용 */
+        :root {
+            --bg: #0f172a; --card: #1e293b; --text: #f1f5f9;
+            --sub-text: #94a3b8; --accent: #38bdf8; --border: #334155;
+            --link-color: #38bdf8;
+        }
+        body.light-mode {
+            --bg: #f8fafc; --card: #ffffff; --text: #0f172a;
+            --accent: #0284c7; --border: #e2e8f0; --link-color: #0284c7;
+        }
+
+        body {
+            background: var(--bg); color: var(--text);
+            font-family: 'Pretendard', sans-serif;
+            margin: 0; padding: 80px 20px; transition: all 0.3s ease;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        .highlight-box {
+            background: var(--card);
+            border: 2px solid var(--border); /* 테두리 살짝 두껍게 */
+            padding: 45px;
+            border-radius: 24px;
+            font-size: 1.4rem;
+            max-width: 950px;
+            margin: 0 auto 50px auto;
+            text-align: center;
+        }
+        .highlight-box strong { color: var(--accent); font-size: 1.8rem; display: block; margin-bottom: 10px; }
+    </style>
+</head>
+<body class="dark-mode"> <div class="container">
+        <div class="highlight-box">
+            <strong>WEB PAGE PROJECT</strong>
+            이 페이지는 메인 페이지의 테마 설정을 그대로 이어받아 표시됩니다.
+        </div>
+    </div>
+
+    <script>
+        // URL에서 테마 정보 읽기
+        const urlParams = new URLSearchParams(window.location.search);
+        const theme = urlParams.get('theme');
+
+        if (theme === 'light') {
+            document.body.classList.add('light-mode');
+        }
+        
+    </script>
+</body>
+</html>
