@@ -6,17 +6,17 @@ root/
 
 ├── 📂img
 
-└──📂 design-main/ (폴더)
+└──📂 wepPage-main/ (폴더)
 
 └──📂 pdfReader-main/ (폴더)
 
 └──📂 imageView-main/ (폴더)
 
-└──📂 busterminal-main/ (폴더)
+└──📂 busTerminal-main/ (폴더)
 
 └──📂 gasGs20230324-main/ (폴더)
 
-└──📂 fastfood-main/ (폴더)
+└──📂 fastFood-main/ (폴더)
 
 └──📂 foodkiosk-main/ (폴더)
 
