@@ -3,14 +3,23 @@
 
 root/
 ├── index.html (메인)
+
 ├── 📂img
+
 └──📂 design-main/ (폴더)
+
 └──📂 pdfReader-main/ (폴더)
+
 └──📂 imageView-main/ (폴더)
+
 └──📂 busterminal-main/ (폴더)
+
 └──📂 gasGs20230324-main/ (폴더)
+
 └──📂 fastfood-main/ (폴더)
+
 └──📂 foodkiosk-main/ (폴더)
+
 └──📂 ktx-main/ (폴더)
 
 
