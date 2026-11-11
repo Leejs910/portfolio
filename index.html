@@ -491,7 +491,8 @@
     </style>
 </head>
 
-<body>
+<!-- 라이트 모드가 기본입니다. 처음부터 클래스를 달아 두어야 스크립트가 돌기 전 다크 화면이 번쩍이지 않습니다 -->
+<body class="light-mode">
     <header class="topbar">
         <div class="container">
             <a href="#top" class="topbar-name">LEE JAESEO</a>
@@ -511,15 +512,11 @@
     <main class="container" id="top">
         <!-- 🎚️ 소개 문구는 본인 말투로 다듬어 주세요 -->
         <div class="intro">
-            <img src="./img/paste_blue.webp" alt="이재서 프로필 이미지" class="header-img" id="header-img"
+            <img src="./img/paste_black.webp" alt="이재서 프로필 이미지" class="header-img" id="header-img"
                 width="148" height="148">
             <div>
                 <p class="intro-role">웹디자이너 · 웹퍼블리셔</p>
                 <h1>이재서 포트폴리오</h1>
-                <p class="intro-lead">
-                    사용하는 사람을 먼저 생각하는 화면을 디자인하고, 그 화면을 직접 코드로 만듭니다.
-                    어르신을 위한 교육용 키오스크 UI를 실무로 디자인했고, 반응형 쇼핑몰을 기획부터 퍼블리싱까지 혼자 완성했습니다.
-                </p>
                 <ul class="contact">
                     <li><a href="https://github.com/Leejs910" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
                     <li><a href="mailto:jaeseo90@naver.com">✉ jaeseo90@naver.com</a></li>
@@ -541,7 +538,7 @@
                 </a>
                 <div class="feature-body">
                     <h3>KnottedDonut — 도넛 브랜드 쇼핑몰</h3>
-                    <p class="feature-meta">2026 · 개인 프로젝트 · 기획 · 디자인 · 퍼블리싱 100%</p>
+                    <p class="feature-meta">2026 · 개인 프로젝트 · 기획 · 디자인 100% · 코딩은 AI 도움 90%</p>
                     <ul class="feature-points">
                         <li><strong>9개 페이지</strong> 메인 · 메뉴 · 온라인샵 · 장바구니 · 결제 · 마이페이지 등</li>
                         <li><strong>반응형</strong> PC와 모바일 모두 가로 넘침 없이 맞춤</li>
@@ -573,7 +570,6 @@
             <div class="section-head">
                 <p class="section-label">Work · 2022</p>
                 <h2 id="work-title">실무 디자인</h2>
-                <p>벤처기업 재직 중 원주시 학습관에 납품한 교육용 키오스크의 화면과 서비스 로고를 디자인했습니다.</p>
             </div>
 
             <article class="feature">
@@ -583,7 +579,7 @@
                 </a>
                 <div class="feature-body">
                     <h3>교육용 키오스크 화면(UI) 개선</h3>
-                    <p class="feature-meta">2022 · 재직 · 기존 화면 개선과 기능 확장 · 아이콘 · 에셋 제작</p>
+                    <p class="feature-meta">2022 · 재직 · 디자인 담당 (화면 개선 · 아이콘 · 에셋 제작)</p>
                     <dl class="story">
                         <div>
                             <dt>사용자</dt>
@@ -792,8 +788,8 @@
             });
         }
 
-        let saved = 'dark';
-        try { saved = localStorage.getItem('portfolio-theme') || 'dark'; } catch (e) { /* 저장 불가 환경 */ }
+        let saved = 'light';
+        try { saved = localStorage.getItem('portfolio-theme') || 'light'; } catch (e) { /* 저장 불가 환경 */ }
         applyTheme(saved);
 
         toggleBtn.addEventListener('click', () => {
