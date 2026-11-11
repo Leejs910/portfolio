@@ -5,541 +5,802 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>이재서 | Portfolio</title>
+    <title>이재서 | 웹디자이너 · 웹퍼블리셔 포트폴리오</title>
+    <meta name="description" content="사용하는 사람을 먼저 생각하는 화면을 디자인하고, 직접 코드로 만듭니다. 이재서 포트폴리오.">
+    <meta property="og:title" content="이재서 | 웹디자이너 · 웹퍼블리셔 포트폴리오">
+    <meta property="og:description" content="KnottedDonut 쇼핑몰 퍼블리싱 · 교육용 키오스크 UI 디자인 · 키오스크 시뮬레이터">
+    <!-- 🎚️ 배포 주소가 정해지면 og:image 를 절대 주소로 넣어 주세요.
+         (예: https://주소/img/thumbs/donut.webp) 상대 경로는 카톡·메일 미리보기에서 무시됩니다. -->
 
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 
     <style>
-        /* 1. 디자인 변수 설정 (다크모드가 기본) */
+        /* ── 색 ───────────────────────────────────────────
+           다크가 기본입니다. 글자색은 모두 배경 대비 4.5:1 이상으로 맞춰 두었습니다
+           (라이트 모드의 서브 글자를 예전 #94a3b8 로 되돌리면 2.6:1 로 떨어집니다). */
         :root {
             --bg: #0f172a;
-            /* 진한 네이비 블랙 */
             --card: #1e293b;
-            /* 카드 배경 */
+            --card-hover: #243349;
             --text: #f1f5f9;
-            /* 밝은 회색 글자 */
-            --sub-text: #94a3b8;
-            /* 서브 글자 */
+            --sub-text: #a3b1c6;
             --accent: #38bdf8;
-            /* 포인트 블루 */
             --border: #334155;
-            /* 경계선 */
-            /* --shadow: rgba(0, 0, 0, 0.3); */
-            --accent-glow: rgba(56, 189, 248, 0.3);
-            --link-color: #38bdf8;
+            --tag-bg: rgba(56, 189, 248, 0.12);
+            --tag-border: rgba(56, 189, 248, 0.25);
+            --shadow: rgba(0, 0, 0, 0.35);
+            --thumb-bg: #0b1222;
         }
 
-        /* 2. 라이트 모드 (변수 업데이트) */
         body.light-mode {
             --bg: #f8fafc;
             --card: #ffffff;
+            --card-hover: #ffffff;
             --text: #0f172a;
-            --accent: #0284c7;
-            /* 조금 더 진한 블루 */
+            --sub-text: #475569;
+            --accent: #0369a1;
             --border: #e2e8f0;
-            /* 라이트 모드용 연한 그림자 효과 */
-            --accent-glow: rgba(2, 132, 199, 0.1);
-            --link-color: #0284c7;
+            --tag-bg: rgba(3, 105, 161, 0.08);
+            --tag-border: rgba(3, 105, 161, 0.18);
+            --shadow: rgba(15, 23, 42, 0.08);
+            --thumb-bg: #e2e8f0;
         }
 
-        body.light-mode .header-img {
-            border: none;
-            box-shadow: none;
-        }
+        /* ── 기본 ── */
+        * { box-sizing: border-box; }
 
-        /* 3. 기본 스타일 & 타이포그래피 */
-        * {
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
+            margin: 0;
             background: var(--bg);
             color: var(--text);
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-            margin: 0;
-            padding: 80px 20px;
-            /* 상하 여백 확대 */
             line-height: 1.6;
+            word-break: keep-all;
+            /* 테마 바꿀 때만 색이 부드럽게 넘어가게 합니다.
+               예전처럼 * 에 transition: all 을 걸면 모든 요소의 모든 속성이 애니메이션돼 느려집니다. */
+            transition: background-color .3s ease, color .3s ease;
+        }
+
+        a { color: inherit; }
+
+        img { max-width: 100%; display: block; }
+
+        :focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 8px;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1160px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 80px;
+        /* ── 상단 바 ── */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: color-mix(in srgb, var(--bg) 88%, transparent);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
         }
 
-        /* 3. 이미지 스타일 (변수 사용) */
-        .header-img {
-            display: block;
-            margin: 0 auto 30px auto;
-
-            /* 크기 및 비율 고정 */
-            width: 140px;
-            height: 140px;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 50%;
-
-            /* 테두리 및 그림자 효과 완전 삭제 */
-            border: none;
-            box-shadow: none;
-
-            /* 이미지가 교체될 때 부드러운 느낌을 위해 */
-            transition: opacity 0.3s ease;
+        .topbar .container {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            height: 60px;
         }
 
-        h1 {
-            font-size: 3.2rem;
-            /* 크게 키움 */
+        .topbar-name {
             font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 15px;
-            color: var(--text);
+            text-decoration: none;
+            white-space: nowrap;
         }
 
-        /* 4. 다크/라이트 모드 토글 버튼 */
+        .topbar nav {
+            display: flex;
+            gap: 20px;
+            margin-left: auto;
+            /* 폰에서는 메뉴를 옆으로 밀어 볼 수 있게 둡니다 */
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .topbar nav a {
+            color: var(--sub-text);
+            text-decoration: none;
+            font-size: .95rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .topbar nav a:hover { color: var(--accent); }
+
         .mode-toggle {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            /* 1. 내부 콘텐츠 중앙 정렬 */
-            min-width: 150px;
-            gap: 10px;
-            padding: 10px 20px;
+            gap: 6px;
+            padding: 6px 14px;
             border-radius: 50px;
-            border: 2px solid var(--border);
+            border: 1px solid var(--border);
             background: var(--card);
             color: var(--text);
-            cursor: pointer;
+            font: inherit;
+            font-size: .85rem;
             font-weight: 600;
-            margin-bottom: 40px;
+            cursor: pointer;
             white-space: nowrap;
-            /* 3. 글자가 두 줄로 넘어가는 것 방지 */
-            transition: all 0.3s ease;
         }
 
-        .mode-toggle:hover {
-            border-color: var(--accent);
-            transform: scale(1.05);
-            transform: translateY(-2px);
+        .mode-toggle:hover { border-color: var(--accent); }
+
+        /* ── 소개 ── */
+        .intro {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 40px;
+            align-items: center;
+            padding: 80px 0 72px;
         }
 
-        /* 하이라이트 박스 */
-        .highlight-box {
-            background: var(--card);
+        .header-img {
+            width: 148px;
+            height: 148px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .intro-role {
+            margin: 0 0 6px;
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: .02em;
+        }
+
+        .intro h1 {
+            margin: 0 0 14px;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+
+        .intro-lead {
+            margin: 0 0 20px;
+            color: var(--sub-text);
+            font-size: 1.1rem;
+            max-width: 640px;
+        }
+
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .contact a,
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 50px;
             border: 1px solid var(--border);
-            padding: 30px;
-            margin-top: 40px;
-            border-radius: 16px;
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 4px 12px var(--shadow);
+            background: var(--card);
+            text-decoration: none;
+            font-size: .95rem;
+            font-weight: 600;
         }
 
-        .highlight-box strong {
+        .contact a:hover,
+        .btn:hover {
+            border-color: var(--accent);
             color: var(--accent);
         }
 
-        /* 프로젝트 그리드 */
+        .btn-primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg);
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.1);
+            color: var(--bg);
+        }
+
+        /* ── 섹션 ── */
+        section {
+            padding: 56px 0;
+            /* 상단 바에 제목이 가려지지 않게 */
+            scroll-margin-top: 60px;
+        }
+
+        .section-head {
+            margin-bottom: 28px;
+        }
+
+        .section-label {
+            margin: 0 0 4px;
+            color: var(--accent);
+            font-size: .85rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .section-head h2 {
+            margin: 0 0 8px;
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            letter-spacing: -0.01em;
+        }
+
+        .section-head p {
+            margin: 0;
+            color: var(--sub-text);
+            max-width: 760px;
+        }
+
+        /* ── 대표작 (가로로 긴 카드) ── */
+        .feature {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 0;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .feature-thumb {
+            background: var(--thumb-bg);
+        }
+
+        .feature-thumb img {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+        }
+
+        .feature-body {
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .feature-body h3 {
+            margin: 0;
+            font-size: 1.6rem;
+        }
+
+        .feature-meta {
+            margin: 0;
+            color: var(--sub-text);
+            font-size: .95rem;
+        }
+
+        .feature-points {
+            margin: 0;
+            padding-left: 1.1em;
+            color: var(--sub-text);
+        }
+
+        .feature-points li + li { margin-top: 4px; }
+
+        .feature-points strong { color: var(--text); }
+
+        .feature-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: auto;
+            padding-top: 6px;
+        }
+
+        .note {
+            margin: 0;
+            font-size: .85rem;
+            color: var(--sub-text);
+        }
+
+        /* 실무 카드의 "문제 → 판단 → 결과" 흐름 */
+        .story {
+            display: grid;
+            gap: 10px;
+            margin: 0;
+        }
+
+        .story div {
+            display: grid;
+            grid-template-columns: 4.5em 1fr;
+            gap: 8px;
+        }
+
+        .story dt {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: .9rem;
+        }
+
+        .story dd {
+            margin: 0;
+            color: var(--sub-text);
+            font-size: .95rem;
+        }
+
+        /* ── 일반 카드 그리드 ── */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .grid-sm {
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
         }
 
         .card {
+            display: flex;
+            flex-direction: column;
             background: var(--card);
-            border-radius: 20px;
-            padding: 40px;
             border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
             text-decoration: none;
             color: inherit;
-            display: block;
-            box-shadow: 0 4px 6px var(--shadow);
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: transform .25s ease, border-color .25s ease, background-color .25s ease;
         }
 
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-6px);
             border-color: var(--accent);
-            box-shadow: 0 20px 25px -5px var(--shadow);
+            background: var(--card-hover);
+        }
+
+        .card-thumb {
+            aspect-ratio: 16 / 10;
+            background: var(--thumb-bg);
+            overflow: hidden;
+        }
+
+        .card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .4s ease;
+        }
+
+        .card:hover .card-thumb img { transform: scale(1.04); }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 20px 22px 22px;
+            flex: 1;
         }
 
         .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            color: var(--accent);
+            margin: 0;
+            font-size: 1.15rem;
+            color: var(--text);
         }
 
-        .card p {
-            color: var(--sub-text);
-            font-size: 1.05rem;
-        }
-
-        /* 새 창으로 열리는 카드 제목 옆에 화살표 추가 */
+        /* 새 탭으로 열린다는 표시 */
         .card h3::after {
             content: " ↗";
-            /* 화살표 아이콘 */
-            font-size: 0.9rem;
-            margin-left: 5px;
-            opacity: 0.6;
-            transition: transform 0.3s ease;
+            font-size: .85em;
+            color: var(--accent);
             display: inline-block;
+            transition: transform .25s ease;
         }
 
-        /* 호버 시 화살표가 살짝 위로 튕기게 함 */
-        .card:hover h3::after {
-            transform: translate(2px, -2px);
-            opacity: 1;
+        .card:hover h3::after { transform: translate(2px, -2px); }
+
+        .card p {
+            margin: 0;
+            color: var(--sub-text);
+            font-size: .95rem;
         }
 
-        * 뱃지들을 감싸는 컨테이너 */ .tech-tags {
+        .card-year {
+            font-size: .8rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .tech-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            /* 뱃지 사이 간격 */
-            margin-top: 20px;
+            gap: 6px;
+            margin: auto 0 0;
+            padding: 10px 0 0;
+            list-style: none;
         }
 
-        /* 개별 뱃지 스타일 */
         .tag {
-            font-size: 0.75rem;
+            font-size: .72rem;
             font-weight: 700;
-            letter-spacing: 0.02em;
-            padding: 4px 12px;
+            letter-spacing: .02em;
+            padding: 3px 10px;
             border-radius: 50px;
-            /* 알약 모양 */
-
-            /* 포인트! 배경색은 연하게, 글자색은 진하게 */
-            background: rgba(56, 189, 248, 0.1);
+            background: var(--tag-bg);
+            border: 1px solid var(--tag-border);
             color: var(--accent);
-
-            /* 테두리는 아주 얇고 연하게 (선택 사항) */
-            border: 1px solid rgba(56, 189, 248, 0.2);
-
-            text-transform: uppercase;
-            /* 대문자로 통일하면 더 정돈되어 보임 */
-            transition: all 0.2s ease;
         }
 
-        /* 라이트 모드일 때 가독성 조절 */
-        body.light-mode .tag {
-            background: rgba(2, 132, 199, 0.08);
-            border-color: rgba(2, 132, 199, 0.15);
+        /* ── 푸터 ── */
+        footer {
+            margin-top: 40px;
+            padding: 40px 0 60px;
+            border-top: 1px solid var(--border);
+            color: var(--sub-text);
+            font-size: .9rem;
         }
 
-        /* 카드 호버 시 뱃지도 살짝 강조 */
-        .card:hover .tag {
-            background: var(--accent);
-            color: var(--card);
-            /* 배경색과 대비되는 색상으로 변경 */
-            border-color: var(--accent);
+        footer p { margin: 0 0 8px; }
+
+        /* ── 반응형 ── */
+        @media (max-width: 860px) {
+            .feature { grid-template-columns: 1fr; }
+            .feature-body { padding: 26px 22px; }
         }
 
-        /* 하이라이트 박스 내 링크 스타일 */
-        .highlight-box a {
-            color: var(--link-color);
-            text-decoration: none;
-            /* 밑줄 제거 (깔끔함) */
-            font-weight: 600;
-            transition: all 0.2s ease;
-            word-break: break-all;
-            /* 모바일에서 URL이 길어질 때 줄바꿈 방지 */
-            /* border-bottom: 1px dashed var(--link-color); 세련된 밑줄 효과 */
-            padding-bottom: 2px;
+        @media (max-width: 640px) {
+            .topbar .container { gap: 12px; }
+            .topbar-name { display: none; }
+            .topbar nav { margin-left: 0; gap: 16px; }
+            .mode-toggle { margin-left: auto; }
+            .mode-text { display: none; }
+
+            .intro {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 48px 0 40px;
+                text-align: left;
+            }
+
+            .header-img { width: 104px; height: 104px; }
+
+            section { padding: 40px 0; }
+
+            .story div { grid-template-columns: 1fr; gap: 0; }
         }
 
-        .highlight-box a:hover {
-            filter: brightness(1.2);
-            /* 마우스 올리면 살짝 더 밝게 */
-            border-bottom-style: solid;
-            /* 호버 시 실선으로 변경 */
-        }
-
-        .highlight-box span {
-            opacity: 0.8;
-            font-size: 0.9rem;
-            margin-right: 5px;
+        /* 움직임 줄이기를 켠 사람에게는 들썩임만 작게 남깁니다 (완전히 끄지는 않음) */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .card:hover { transform: translateY(-2px); }
+            .card:hover .card-thumb img { transform: none; }
         }
     </style>
 </head>
 
-<body class="dark-mode">
-    <div class="container">
-        <header>
-            <img src="./img/paste_blue.webp" alt="Profile" class="header-img" id="header-img">
-            <h1>LEE JAESEO PORTFOLIO</h1>
-
-            <button class="mode-toggle" onclick="toggleMode()">
-                <span id="mode-icon">🌙</span>
-                <span id="mode-text">다크 모드</span>
+<body>
+    <header class="topbar">
+        <div class="container">
+            <a href="#top" class="topbar-name">LEE JAESEO</a>
+            <nav aria-label="섹션 바로가기">
+                <a href="#featured">대표작</a>
+                <a href="#work">실무</a>
+                <a href="#web">웹 프로젝트</a>
+                <a href="#design">디자인·그림</a>
+            </nav>
+            <button type="button" class="mode-toggle" id="mode-toggle" aria-pressed="false">
+                <span id="mode-icon" aria-hidden="true">🌙</span>
+                <span class="mode-text" id="mode-text">다크 모드</span>
             </button>
+        </div>
+    </header>
 
-            <div class="highlight-box">
-                <strong>[ Portfolio works ]</strong><br>
-                Self-directed Project(자기주도 프로젝트)<br>
-                <small style="opacity: 0.7;">본 포트폴리오는 데스크톱 환경(1920px)에 최적화되어 있습니다 <br></small>
-
-                <div style="margin-top: 10px;">
-                    <span>🔗 GitHub:</span>
-                    <a href="https://github.com/Leejs910" target="_blank" rel="noopener noreferrer">github.com/Leejs910</a>
-                </div>
-                 <div>✉ Mail : jaeseo90@naver.com</div>
+    <main class="container" id="top">
+        <!-- 🎚️ 소개 문구는 본인 말투로 다듬어 주세요 -->
+        <div class="intro">
+            <img src="./img/paste_blue.webp" alt="이재서 프로필 이미지" class="header-img" id="header-img"
+                width="148" height="148">
+            <div>
+                <p class="intro-role">웹디자이너 · 웹퍼블리셔</p>
+                <h1>이재서 포트폴리오</h1>
+                <p class="intro-lead">
+                    사용하는 사람을 먼저 생각하는 화면을 디자인하고, 그 화면을 직접 코드로 만듭니다.
+                    어르신을 위한 교육용 키오스크 UI를 실무로 디자인했고, 반응형 쇼핑몰을 기획부터 퍼블리싱까지 혼자 완성했습니다.
+                </p>
+                <ul class="contact">
+                    <li><a href="https://github.com/Leejs910" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+                    <li><a href="mailto:jaeseo90@naver.com">✉ jaeseo90@naver.com</a></li>
+                </ul>
             </div>
-        </header>
-
-        <div class="grid">
-            <a href="./gasGs20230324-main/index.html" class="card" target="_blank" rel="noopener noreferrer"
-                aria-label="셀프 주유 시뮬레이터 (새 창에서 열기)">
-                <h3>셀프 주유 시뮬레이터</h3>
-                <p>셀프 주유소 키오스크 교육앱입니다.</p>
-                <div class="tech-tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JAVASCRIPT</span>
-                </div>
-            </a>
-
-            <a href="https://spotthediffer.vercel.app" class="card" target="_blank" rel="noopener noreferrer"
-                aria-label="다른 그림 찾기 앱 (새 창에서 열기)">
-                <h3>다른 그림 찾기</h3>
-                <p>두 이미지 사이의 미세한 차이를 찾아내는 반응형 게임 앱입니다.</p>
-                <div class="tech-tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JAVASCRIPT</span>
-                </div>
-            </a>
-            <a href="./foodkiosk-main/index.html" class="card" target="_blank" rel="noopener noreferrer"
-                aria-label="음식적 키오스크 (새 창에서 열기)">
-                <h3>음식점 키오스크</h3>
-                <p>음식점 키오스크 교육앱입니다.</p>
-                <div class="tech-tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JAVASCRIPT</span>
-                </div>
-            </a>
-
-            <a href="./ktx-main/index.html" class="card" target="_blank" rel="noopener noreferrer"
-                aria-label="ktx 예매 (새 창에서 열기)">
-                <h3>KTX</h3>
-                <p>KTX 예약 교육앱입니다.</p>
-                <div class="tech-tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JAVASCRIPT</span>
-                </div>
-            </a>
-
-            <a href="./busTerminal-main/index.html" class="card" target="_blank" rel="noopener noreferrer"
-                aria-label="버스 터미널 (새 창에서 열기)">
-                <h3>버스 터미널</h3>
-                <p>버스 터미널 키오스크 교육앱입니다.</p>
-                <div class="tech-tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JAVASCRIPT</span>
-                </div>
-            </a>
-            <a href="./fastFood-main/index.html" class="card" target="_blank" rel="noopener noreferrer"
-                aria-label="fastfood (새 창에서 열기)">
-                <h3>FASTFOOD 키오스크</h3>
-                <p>FASTFOOD 키오스크 교육앱입니다.</p>
-                <div class="tech-tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JAVASCRIPT</span>
-                </div>
-            </a>
-
-            </a>
         </div>
 
-        <header>
-            <div class="highlight-box" style="margin-top: 80px;">
-                <strong>[ Portfolio works ]</strong><br>
-                Design Project<br>
-                <small style="opacity: 0.7;">디자인 작업물 포트폴리오 <br></small>
+        <!-- ① 대표작 -->
+        <section id="featured" aria-labelledby="featured-title">
+            <div class="section-head">
+                <p class="section-label">Featured</p>
+                <h2 id="featured-title">대표작</h2>
             </div>
-        </header>
-        <div class="grid">
-            
-            
-                        <a href="javascript:void(0);" class="card" onclick="openSubPage('./wepPage-main2/index.html')">
-                            <h3>화면 UI 제작</h3>
-                            <p>2022년 키오스크 화면,이미지 제작</p>
-                            <div class="tech-tags">
-                                <span class="tag">ILLUSTRATOR</span>
-                                <span class="tag">ADOBE XD</span>
-                            </div>
-                        </a>
 
-            <a href="javascript:void(0);" class="card" onclick="openSubPage('./wepPage-main/index.html')">
-                <h3>로고 리뉴얼</h3>
-                <p>2022년 회사 서비스 로고 리뉴얼 작업</p>
-                <div class="tech-tags">
-                    <span class="tag">PHOTOSHOP</span>
-                    <span class="tag">ILLUSTRATOR</span>
+            <article class="feature">
+                <a class="feature-thumb" href="https://knotted-donut.vercel.app/" target="_blank"
+                    rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+                    <img src="./img/thumbs/donut.webp" alt="" width="800" height="500">
+                </a>
+                <div class="feature-body">
+                    <h3>KnottedDonut — 도넛 브랜드 쇼핑몰</h3>
+                    <p class="feature-meta">2026 · 개인 프로젝트 · 기획 · 디자인 · 퍼블리싱 100%</p>
+                    <ul class="feature-points">
+                        <li><strong>9개 페이지</strong> 메인 · 메뉴 · 온라인샵 · 장바구니 · 결제 · 마이페이지 등</li>
+                        <li><strong>반응형</strong> PC와 모바일 모두 가로 넘침 없이 맞춤</li>
+                        <li><strong>스크롤 연출</strong> GSAP · ScrollTrigger · Lenis</li>
+                        <li><strong>주문 흐름</strong> 장바구니 → 결제 → 영수증을 서버 없이 localStorage 로 구현한 시연용 흐름</li>
+                        <li><strong>구조</strong> CSS · JS 를 공통 / 컴포넌트 / 페이지로 나눠 필요한 것만 불러옴</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JAVASCRIPT</span>
+                        <span class="tag">GSAP</span>
+                        <span class="tag">SWIPER</span>
+                    </div>
+                    <div class="feature-actions">
+                        <!-- 🎚️ 사이트 주소(Vercel)가 바뀌면 위 썸네일 링크와 아래 사이트 보기 버튼을 같이 고쳐 주세요 -->
+                        <a class="btn btn-primary" href="https://knotted-donut.vercel.app/" target="_blank"
+                            rel="noopener noreferrer">사이트 보기 ↗</a>
+                        <a class="btn" href="https://github.com/Leejs910/knotted-donut" target="_blank"
+                            rel="noopener noreferrer">코드 보기 (GitHub) ↗</a>
+                    </div>
+                    <p class="note">노티드(Knotted) 브랜드를 재해석한 비상업 학습용 작업입니다.</p>
                 </div>
-            </a>
+            </article>
+        </section>
 
-
-            <a href="javascript:void(0);" class="card" onclick="openPdfReader('./img/brand_iden.pdf')"
-                aria-label="PDF 포트폴리오 보기 (새 창에서 열기)">
-                <h3>브랜드 아이덴티티 디자인</h3>
-                <p>2020년 학교 수업 프로젝트 </p>
-                <div class=" tech-tags">
-                    <span class="tag">PHOTOSHOP</span>
-                    <span class="tag">ILLUSTRATOR</span>
-                </div>
-            </a>
-            <a href="javascript:void(0);" class="card" onclick="openPdfReader('./img/brand_iden2.pdf')"
-                aria-label="PDF 포트폴리오 보기 (새 창에서 열기)">
-                <h3>브랜드 아이덴티티 디자인 2</h3>
-                <p>2021년 학교 수업 프로젝트</p>
-                <div class=" tech-tags">
-                    <span class="tag">PHOTOSHOP</span>
-                    <span class="tag">ILLUSTRATOR</span>
-                </div>
-            </a>
-
-            <a href="javascript:void(0);" class="card" onclick="openPdfReader('./img/char_poster.pdf')"
-                aria-label="PDF 포트폴리오 보기 (새 창에서 열기)">
-                <h3>캐릭터, 포스터, 기타</h3>
-                <p>2019~2022 캐릭터, 포스터, 개인작업</p>
-                <div class=" tech-tags">
-                    <span class="tag">PHOTOSHOP</span>
-                    <span class="tag">ILLUSTRATOR</span>
-                </div>
-            </a>
-
-
-
-        </div>
-
-
-        <header>
-            <div class="highlight-box" style="margin-top: 80px;">
-                <strong>[ Portfolio works ]</strong><br>
-                Webtoon Art Project<br>
-                <small style="opacity: 0.7;">만화 그림 작업물<br></small>
+        <!-- ② 실무 -->
+        <section id="work" aria-labelledby="work-title">
+            <div class="section-head">
+                <p class="section-label">Work · 2022</p>
+                <h2 id="work-title">실무 디자인</h2>
+                <p>벤처기업 재직 중 원주시 학습관에 납품한 교육용 키오스크의 화면과 서비스 로고를 디자인했습니다.</p>
             </div>
-        </header>
 
-        <div class="grid">
-
-            <a href="javascript:void(0);" class="card" onclick="openImageViewerRange(1, 15)" aria-label="이미지 프로젝트 보기">
-                <h3>만화 작업</h3>
-                <p>2019~2021 만화 </p>
-                <div class="tech-tags">
-                    <span class="tag">CLIPSTUDIO</span>
-                    <span class="tag">PHOTOSHOP</span>
+            <article class="feature">
+                <a class="feature-thumb" href="./wepPage-main2/index.html" data-themed target="_blank"
+                    rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+                    <img src="./img/thumbs/kiosk-ui.webp" alt="" width="800" height="500" loading="lazy">
+                </a>
+                <div class="feature-body">
+                    <h3>교육용 키오스크 화면(UI) 개선</h3>
+                    <p class="feature-meta">2022 · 재직 · 기존 화면 개선과 기능 확장 · 아이콘 · 에셋 제작</p>
+                    <dl class="story">
+                        <div>
+                            <dt>사용자</dt>
+                            <dd>디지털 기기가 낯선 어르신</dd>
+                        </div>
+                        <div>
+                            <dt>판단</dt>
+                            <dd>뜻이 바로 보이는 구체적인 아이콘, 굵은 글씨, 잘못 누르지 않게 크고 넓은 버튼</dd>
+                        </div>
+                        <div>
+                            <dt>시행착오</dt>
+                            <dd>고정 크기로 만든 화면이 기기마다 여백이 생기는 문제 → 미디어 쿼리로 해결</dd>
+                        </div>
+                        <div>
+                            <dt>확장</dt>
+                            <dd>기능이 늘자 '기본 / 생활' 카테고리로 나눠 한 화면의 정보량을 줄임</dd>
+                        </div>
+                    </dl>
+                    <div class="tech-tags">
+                        <span class="tag">ADOBE XD</span>
+                        <span class="tag">ILLUSTRATOR</span>
+                    </div>
+                    <div class="feature-actions">
+                        <a class="btn btn-primary" href="./wepPage-main2/index.html" data-themed target="_blank"
+                            rel="noopener noreferrer">작업 과정 보기 ↗</a>
+                    </div>
                 </div>
-            </a>
-            <a href="javascript:void(0);" class="card" onclick="openImageViewerRange(16, 20)"aria-label="이미지 프로젝트 보기">
-                <h3>그림, 낙서, 기타</h3>
-                <p>2019~2021 그림</p>
-                <div class="tech-tags">
-                    <span class="tag">PHOTOSHOP</span>
-                </div>
-            </a>
+            </article>
 
+            <div class="grid" style="margin-top: 24px;">
+                <a href="./wepPage-main/index.html" data-themed class="card" target="_blank" rel="noopener noreferrer">
+                    <div class="card-thumb"><img src="./img/thumbs/logo.webp" alt="" width="800" height="500" loading="lazy"></div>
+                    <div class="card-body">
+                        <span class="card-year">2022 · 재직</span>
+                        <h3>서비스 로고 리뉴얼</h3>
+                        <p>'디지털·훈민정음' 자동화기기 가상체험기 로고를 새로 디자인했습니다.</p>
+                        <div class="tech-tags">
+                            <span class="tag">PHOTOSHOP</span>
+                            <span class="tag">ILLUSTRATOR</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ③ 웹 프로젝트 -->
+        <section id="web" aria-labelledby="web-title">
+            <div class="section-head">
+                <p class="section-label">Web</p>
+                <h2 id="web-title">웹 프로젝트</h2>
+                <p>
+                    실제 무인기기의 화면과 조작 순서를 웹으로 재현한 교육용 시뮬레이터입니다.
+                    실제 기기와 같아야 연습이 되므로, 화면 비율도 기기 그대로 두었습니다. PC에서 보기를 권장합니다.
+                </p>
+            </div>
+
+            <div class="grid">
+                <a href="./gasGs20230324-main/index.html" class="card" target="_blank" rel="noopener noreferrer">
+                    <div class="card-thumb"><img src="./img/thumbs/gas.webp" alt="" width="800" height="500" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3>셀프 주유 시뮬레이터</h3>
+                        <p>유종 선택부터 카드 결제, 주유까지 셀프 주유기의 전 과정을 연습합니다.</p>
+                        <div class="tech-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JAVASCRIPT</span></div>
+                    </div>
+                </a>
+
+                <a href="./ktx-main/index.html" class="card" target="_blank" rel="noopener noreferrer">
+                    <div class="card-thumb"><img src="./img/thumbs/ktx.webp" alt="" width="800" height="500" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3>KTX 승차권 발매기</h3>
+                        <p>출발·도착역, 날짜, 인원, 좌석을 고르고 승차권을 인쇄하는 흐름을 재현했습니다.</p>
+                        <div class="tech-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JAVASCRIPT</span></div>
+                    </div>
+                </a>
+
+                <a href="./busTerminal-main/index.html" class="card" target="_blank" rel="noopener noreferrer">
+                    <div class="card-thumb"><img src="./img/thumbs/bus.webp" alt="" width="800" height="500" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3>버스터미널 무인 발매기</h3>
+                        <p>도착 터미널과 배차, 좌석을 골라 시외버스 표를 발권합니다.</p>
+                        <div class="tech-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JAVASCRIPT</span></div>
+                    </div>
+                </a>
+
+                <a href="./fastFood-main/index.html" class="card" target="_blank" rel="noopener noreferrer">
+                    <div class="card-thumb"><img src="./img/thumbs/fastfood.webp" alt="" width="800" height="500" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3>패스트푸드 키오스크</h3>
+                        <p>단품·세트 선택, 디저트·음료 변경, 포장 여부와 결제까지 주문 과정을 연습합니다.</p>
+                        <div class="tech-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JAVASCRIPT</span></div>
+                    </div>
+                </a>
+
+                <a href="./foodkiosk-main/index.html" class="card" target="_blank" rel="noopener noreferrer">
+                    <div class="card-thumb"><img src="./img/thumbs/foodkiosk.webp" alt="" width="800" height="500" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3>음식점 키오스크</h3>
+                        <p>메뉴를 담고 결제한 뒤 테이블 번호를 입력하고 영수증을 받는 흐름입니다.</p>
+                        <div class="tech-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JAVASCRIPT</span></div>
+                    </div>
+                </a>
+
+                <a href="https://spotthediffer.vercel.app" class="card" target="_blank" rel="noopener noreferrer">
+                    <div class="card-thumb"><img src="./img/thumbs/spot.webp" alt="" width="800" height="500" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3>다른 그림 찾기</h3>
+                        <p>두 그림 사이의 작은 차이를 찾는 반응형 게임입니다.</p>
+                        <div class="tech-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JAVASCRIPT</span></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ④ 디자인 · 그림 -->
+        <section id="design" aria-labelledby="design-title">
+            <div class="section-head">
+                <p class="section-label">Design &amp; Art</p>
+                <h2 id="design-title">디자인 · 그림</h2>
+            </div>
+
+            <div class="grid grid-sm">
+                <!-- PDF 는 pdfReader 가 ./img/ 기준으로 찾습니다 (pdfReader-main/img/) -->
+                <a href="./pdfReader-main/index.html?file=.%2Fimg%2Fbrand_iden.pdf" data-themed class="card"
+                    target="_blank" rel="noopener noreferrer">
+                    <div class="card-thumb"><img src="./img/thumbs/brand_iden.webp" alt="" width="800" height="500" loading="lazy"></div>
+                    <div class="card-body">
+                        <span class="card-year">2020 · 학교 프로젝트</span>
+                        <h3>브랜드 아이덴티티 1</h3>
+                        <div class="tech-tags"><span class="tag">PHOTOSHOP</span><span class="tag">ILLUSTRATOR</span></div>
+                    </div>
+                </a>
+
+                <a href="./pdfReader-main/index.html?file=.%2Fimg%2Fbrand_iden2.pdf" data-themed class="card"
+                    target="_blank" rel="noopener noreferrer">
+                    <div class="card-thumb"><img src="./img/thumbs/brand_iden2.webp" alt="" width="800" height="500" loading="lazy"></div>
+                    <div class="card-body">
+                        <span class="card-year">2021 · 학교 프로젝트</span>
+                        <h3>브랜드 아이덴티티 2</h3>
+                        <div class="tech-tags"><span class="tag">PHOTOSHOP</span><span class="tag">ILLUSTRATOR</span></div>
+                    </div>
+                </a>
+
+                <a href="./pdfReader-main/index.html?file=.%2Fimg%2Fchar_poster.pdf" data-themed class="card"
+                    target="_blank" rel="noopener noreferrer">
+                    <div class="card-thumb"><img src="./img/thumbs/char_poster.webp" alt="" width="800" height="500" loading="lazy"></div>
+                    <div class="card-body">
+                        <span class="card-year">2019 – 2022</span>
+                        <h3>캐릭터 · 포스터</h3>
+                        <div class="tech-tags"><span class="tag">PHOTOSHOP</span><span class="tag">ILLUSTRATOR</span></div>
+                    </div>
+                </a>
+
+                <!-- 이미지 뷰어는 imageView-main/img/ 의 WebP 를 읽습니다 (원본 PNG 보다 약 12배 가벼움) -->
+                <a href="./imageView-main/index.html?files=1.webp,2.webp,3.webp,4.webp,5.webp,6.webp,7.webp,8.webp,9.webp,10.webp,11.webp,12.webp,13.webp,14.webp,15.webp"
+                    data-themed class="card" target="_blank" rel="noopener noreferrer">
+                    <div class="card-thumb"><img src="./img/thumbs/comic.webp" alt="" width="800" height="500" loading="lazy"></div>
+                    <div class="card-body">
+                        <span class="card-year">2019 – 2021</span>
+                        <h3>만화</h3>
+                        <div class="tech-tags"><span class="tag">CLIP STUDIO</span><span class="tag">PHOTOSHOP</span></div>
+                    </div>
+                </a>
+
+                <a href="./imageView-main/index.html?files=16.webp,17.webp,18.webp,19.webp,20.webp" data-themed
+                    class="card" target="_blank" rel="noopener noreferrer">
+                    <div class="card-thumb"><img src="./img/thumbs/drawing.webp" alt="" width="800" height="500" loading="lazy"></div>
+                    <div class="card-body">
+                        <span class="card-year">2019 – 2021</span>
+                        <h3>그림 · 드로잉</h3>
+                        <div class="tech-tags"><span class="tag">PHOTOSHOP</span></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 이재서 · <a href="mailto:jaeseo90@naver.com">jaeseo90@naver.com</a></p>
+            <p>
+                시뮬레이터 속 GS칼텍스 · 코레일 등의 로고와 KnottedDonut 의 노티드 브랜드 요소는 각 소유자의 것이며,
+                교육 · 학습 목적으로 재현한 비상업 작업입니다.
+            </p>
         </div>
-
-
-
-
-
-
-
-
-    </div>
+    </footer>
 
     <script>
+        // 다크/라이트 전환. 하위 페이지(뷰어 · 상세)에도 ?theme= 로 같은 테마를 넘깁니다.
+        // 고른 테마는 브라우저에 기억해 두고, 저장이 막힌 환경(시크릿 창 등)에서는 그냥 넘어갑니다.
+        const toggleBtn = document.getElementById('mode-toggle');
+        const themedLinks = document.querySelectorAll('a[data-themed]');
 
+        function applyTheme(theme) {
+            const light = theme === 'light';
+            document.body.classList.toggle('light-mode', light);
+            document.getElementById('mode-icon').textContent = light ? '☀️' : '🌙';
+            document.getElementById('mode-text').textContent = light ? '라이트 모드' : '다크 모드';
+            document.getElementById('header-img').src = light ? './img/paste_black.webp' : './img/paste_blue.webp';
+            toggleBtn.setAttribute('aria-pressed', String(light));
 
-        function toggleMode() {
-            const body = document.body;
-            const icon = document.getElementById('mode-icon');
-            const text = document.getElementById('mode-text');
-            const img = document.getElementById('header-img'); // 이미지 요소 가져오기
-
-            body.classList.toggle('light-mode');
-
-            if (body.classList.contains('light-mode')) {
-                icon.innerText = '☀️';
-                text.innerText = '라이트 모드';
-                img.src = './img/paste_black.webp'; // 라이트 모드용 이미지 경로
-            } else {
-                icon.innerText = '🌙';
-                text.innerText = '다크 모드';
-                img.src = './img/paste_blue.webp';  // 다크 모드용 이미지 경로 (기본값)
-            }
+            themedLinks.forEach((a) => {
+                const url = new URL(a.getAttribute('href'), location.href);
+                url.searchParams.set('theme', theme);
+                // imageView 의 files 쉼표가 %2C 로 바뀌어도, 뷰어가 searchParams.get() 으로 읽으면 다시 풀립니다.
+                a.href = url.href;
+            });
         }
 
-        // pdf리더기
-        function openPdfReader(pdfUrl) {
-            const isLightMode = document.body.classList.contains('light-mode');
-            const theme = isLightMode ? 'light' : 'dark'; // 현재 모드 파악
+        let saved = 'dark';
+        try { saved = localStorage.getItem('portfolio-theme') || 'dark'; } catch (e) { /* 저장 불가 환경 */ }
+        applyTheme(saved);
 
-            const width = 1400;
-            const height = 900;
-            const left = (window.screen.width / 2) - (width / 2);
-            const top = (window.screen.height / 2) - (height / 2);
-
-            // 주소 뒤에 &theme=light (또는 dark)를 추가합니다.
-            window.open(
-                `./pdfReader-main/index.html?file=${encodeURIComponent(pdfUrl)}&theme=${theme}`,
-                'PDFReader',
-                `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=no`
-            );
-        }
-
-        // 이미지 뷰어
-        function openImageViewer(imgList) {
-            const isLightMode = document.body.classList.contains('light-mode');
-            const theme = isLightMode ? 'light' : 'dark';
-
-            const width = 1400;
-            const height = 900;
-            const left = (window.screen.width / 2) - (width / 2);
-            const top = (window.screen.height / 2) - (height / 2);
-
-            // 파일 리스트와 테마를 함께 전송
-            window.open(
-                `./imageView-main/index.html?files=${imgList}&theme=${theme}`,
-                'ImageViewer',
-                `width=${width},height=${height},left=${left},top=${top},resizable=yes`
-            );
-        }
-
-        function openImageViewerRange(start, end) {
-            let imgList = [];
-            for (let i = start; i <= end; i++) {
-                imgList.push(`${i}.png`); // 숫자에 .png를 붙여 배열 생성
-            }
-            const fileString = imgList.join(','); // '1.png,2.png...' 문자열로 변환
-
-            // 기존 openImageViewer 로직 실행
-            openImageViewer(fileString);
-        }
-
-        // 웹뷰어
-        function openSubPage(pagePath) {
-            const isLightMode = document.body.classList.contains('light-mode');
-            const theme = isLightMode ? 'light' : 'dark';
-
-            // 새 창으로 열면서 테마 정보 전달
-            window.open(`${pagePath}?theme=${theme}`, '_blank');
-        }
+        toggleBtn.addEventListener('click', () => {
+            const next = document.body.classList.contains('light-mode') ? 'dark' : 'light';
+            applyTheme(next);
+            try { localStorage.setItem('portfolio-theme', next); } catch (e) { /* 저장 불가 환경 */ }
+        });
     </script>
 </body>
 
