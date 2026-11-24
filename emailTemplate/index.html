@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>Knotted 신메뉴 출시 · 첫 주문 10% 쿠폰</title>
+  <!--
+    이메일 퍼블리싱 메모
+    - 레이아웃은 table, 스타일은 태그마다 inline으로 작성 (Gmail은 head의 style을 일부 지움)
+    - 본문 너비 600px 고정, 모바일에서는 100%로 줄어듦
+    - 상품 3칸은 inline-block 방식이라 미디어 쿼리를 지원하지 않는 메일 앱에서도 좁은 화면에서 자동으로 세로로 쌓임
+    - 버튼은 이미지가 아닌 표 칸에 배경색을 칠한 방식 (이미지 차단 시에도 보임)
+    - 아래 style은 지원하는 메일 앱에서만 적용되는 보조 스타일
+  -->
+  <style>
+    body { margin: 0; padding: 0; }
+    a { text-decoration: none; }
+    @media screen and (max-width: 620px) {
+      .container { width: 100% !important; }
+      .px { padding-left: 20px !important; padding-right: 20px !important; }
+      .hero-title { font-size: 26px !important; line-height: 34px !important; }
+      .product { width: 100% !important; max-width: 100% !important; }
+    }
+  </style>
+</head>
+<body style="margin:0; padding:0; background-color:#f3ede2;">
+
+  <!-- 받은편지함 미리보기 문구 (화면에는 안 보임) -->
+  <div style="display:none; max-height:0; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#f3ede2;">
+    새로 나온 두바이 초코 청포도 케이크와 함께, 첫 주문 10% 할인 쿠폰을 보내드려요.
+  </div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f3ede2;">
+    <tr>
+      <td align="center" style="padding:24px 10px;">
+
+        <!-- 본문 600px -->
+        <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#fff8e7; border-radius:16px; overflow:hidden;">
+
+          <!-- 상단 바 -->
+          <tr>
+            <td align="center" style="background-color:#ffd84d; padding:18px 20px;">
+              <a href="https://knotted-donut.vercel.app/" target="_blank">
+                <img src="https://knotted-donut.vercel.app/img/black_logo.png" width="140" alt="Knotted" style="display:block; width:140px; height:auto; border:0;">
+              </a>
+            </td>
+          </tr>
+
+          <!-- 메인 비주얼 -->
+          <tr>
+            <td class="px" align="center" style="padding:40px 40px 8px 40px; font-family:'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕',sans-serif; color:#3b2a20;">
+              <p style="margin:0 0 10px 0; font-size:14px; line-height:20px; font-weight:bold; color:#f48ca8; letter-spacing:1px;">NEW MENU</p>
+              <h1 class="hero-title" style="margin:0; font-size:32px; line-height:42px; font-weight:bold; color:#3b2a20;">두바이 초코 청포도 케이크가<br>새로 나왔어요</h1>
+              <p style="margin:16px 0 0 0; font-size:16px; line-height:26px; color:#5c4a3d;">쫀득한 초코 크림 사이에 상큼한 청포도를 듬뿍 넣었어요.<br>이번 주에만 매장과 온라인샵에서 먼저 만나보세요.</p>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:24px 40px 8px 40px;">
+              <a href="https://knotted-donut.vercel.app/" target="_blank">
+                <img src="https://knotted-donut.vercel.app/img_menu/b_03.webp" width="320" alt="두바이 초코 청포도 케이크" style="display:block; width:100%; max-width:320px; height:auto; border:0; border-radius:16px;">
+              </a>
+            </td>
+          </tr>
+
+          <!-- 쿠폰 -->
+          <tr>
+            <td class="px" align="center" style="padding:24px 40px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:2px dashed #f48ca8; border-radius:12px; background-color:#ffffff;">
+                <tr>
+                  <td align="center" style="padding:22px 16px; font-family:'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕',sans-serif; color:#3b2a20;">
+                    <p style="margin:0; font-size:14px; line-height:20px; color:#5c4a3d;">첫 주문 고객님께 드리는 쿠폰</p>
+                    <p style="margin:6px 0 0 0; font-size:28px; line-height:36px; font-weight:bold; color:#f48ca8;">10% 할인</p>
+                    <p style="margin:10px 0 0 0; font-size:15px; line-height:22px;">쿠폰 코드 <strong style="background-color:#fff1b8; padding:2px 8px; border-radius:4px;">WELCOME10</strong></p>
+                    <p style="margin:8px 0 0 0; font-size:12px; line-height:18px; color:#8a7a6d;">온라인샵 결제 화면에서 입력 · 발급일로부터 14일 동안 사용 가능</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- 버튼 (이미지 아님) -->
+          <tr>
+            <td align="center" style="padding:0 40px 36px 40px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="center" bgcolor="#3b2a20" style="border-radius:28px;">
+                    <a href="https://knotted-donut.vercel.app/" target="_blank" style="display:inline-block; padding:15px 36px; font-family:'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕',sans-serif; font-size:16px; line-height:20px; font-weight:bold; color:#ffffff; text-decoration:none; border-radius:28px;">온라인샵에서 주문하기 →</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- 함께 보면 좋은 상품 -->
+          <tr>
+            <td class="px" style="padding:32px 30px 8px 30px; background-color:#ffffff; font-family:'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕',sans-serif;">
+              <h2 style="margin:0 0 4px 0; font-size:20px; line-height:28px; color:#3b2a20; text-align:center;">함께 담기 좋은 선물</h2>
+              <p style="margin:0; font-size:14px; line-height:20px; color:#8a7a6d; text-align:center;">온라인샵 인기 상품</p>
+            </td>
+          </tr>
+          <tr>
+            <!-- 3칸: inline-block이라 좁은 화면에서는 자동으로 세로 정렬 -->
+            <td align="center" style="padding:16px 15px 32px 15px; background-color:#ffffff; font-size:0;">
+
+              <div class="product" style="display:inline-block; width:100%; max-width:180px; vertical-align:top; margin:0 0 16px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td align="center" style="padding:0 8px;">
+                    <a href="https://knotted-donut.vercel.app/" target="_blank"><img src="https://knotted-donut.vercel.app/img_menu/c_05.webp" width="164" alt="시그니처 말차라떼 롤케이크" style="display:block; width:100%; max-width:164px; height:auto; border:0; border-radius:12px;"></a>
+                  </td></tr>
+                  <tr><td align="center" style="padding:10px 8px 0 8px; font-family:'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕',sans-serif; font-size:14px; line-height:20px; color:#3b2a20;">시그니처 말차라떼 롤케이크</td></tr>
+                  <tr><td align="center" style="padding:4px 8px 0 8px; font-family:'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕',sans-serif; font-size:15px; line-height:20px; font-weight:bold; color:#f48ca8;">19,900원</td></tr>
+                </table>
+              </div><!--
+           --><div class="product" style="display:inline-block; width:100%; max-width:180px; vertical-align:top; margin:0 0 16px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td align="center" style="padding:0 8px;">
+                    <a href="https://knotted-donut.vercel.app/" target="_blank"><img src="https://knotted-donut.vercel.app/img_menu/c_06.webp" width="164" alt="두바이 쫀득쿠키 3개입" style="display:block; width:100%; max-width:164px; height:auto; border:0; border-radius:12px;"></a>
+                  </td></tr>
+                  <tr><td align="center" style="padding:10px 8px 0 8px; font-family:'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕',sans-serif; font-size:14px; line-height:20px; color:#3b2a20;">두바이 쫀득쿠키 (3개입)</td></tr>
+                  <tr><td align="center" style="padding:4px 8px 0 8px; font-family:'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕',sans-serif; font-size:15px; line-height:20px; font-weight:bold; color:#f48ca8;">18,900원</td></tr>
+                </table>
+              </div><!--
+           --><div class="product" style="display:inline-block; width:100%; max-width:180px; vertical-align:top; margin:0 0 16px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td align="center" style="padding:0 8px;">
+                    <a href="https://knotted-donut.vercel.app/" target="_blank"><img src="https://knotted-donut.vercel.app/img_menu/c_08.webp" width="164" alt="버터떡 선물박스 5개입" style="display:block; width:100%; max-width:164px; height:auto; border:0; border-radius:12px;"></a>
+                  </td></tr>
+                  <tr><td align="center" style="padding:10px 8px 0 8px; font-family:'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕',sans-serif; font-size:14px; line-height:20px; color:#3b2a20;">버터떡 선물박스 (5개입)</td></tr>
+                  <tr><td align="center" style="padding:4px 8px 0 8px; font-family:'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕',sans-serif; font-size:15px; line-height:20px; font-weight:bold; color:#f48ca8;">12,900원</td></tr>
+                </table>
+              </div>
+
+            </td>
+          </tr>
+
+          <!-- 하단 -->
+          <tr>
+            <td class="px" align="center" style="padding:28px 40px; background-color:#3b2a20; font-family:'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕',sans-serif;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding:0 6px;"><a href="https://knotted-donut.vercel.app/" target="_blank"><img src="https://knotted-donut.vercel.app/img/insta.png" width="32" alt="인스타그램" style="display:block; width:32px; height:32px; border:0;"></a></td>
+                  <td style="padding:0 6px;"><a href="https://knotted-donut.vercel.app/" target="_blank"><img src="https://knotted-donut.vercel.app/img/kakao.png" width="32" alt="카카오톡 채널" style="display:block; width:32px; height:32px; border:0;"></a></td>
+                </tr>
+              </table>
+              <p style="margin:16px 0 0 0; font-size:12px; line-height:19px; color:#d9cfc4;">이 메일은 Knotted 소식 받기에 동의하신 분께 보내드려요.<br>
+                더 이상 받고 싶지 않으시면 <a href="https://knotted-donut.vercel.app/" target="_blank" style="color:#ffd84d; text-decoration:underline;">수신거부</a>를 눌러주세요.</p>
+              <p style="margin:12px 0 0 0; font-size:11px; line-height:17px; color:#a89889;">노티드(Knotted) 브랜드를 재해석한 비상업 학습용 포트폴리오 작업입니다.</p>
+            </td>
+          </tr>
+
+        </table>
+        <!-- // 본문 -->
+
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
